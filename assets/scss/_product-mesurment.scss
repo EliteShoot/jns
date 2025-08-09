@@ -1,0 +1,149 @@
+.ft-product-mesurment-section {
+	z-index: 1;
+	position: relative;
+	&:before {
+		left: 0;
+		bottom: 0;
+		z-index: -1;
+		content: '';
+		width: 100%;
+		height: 115px;
+		position: absolute;
+		background-color: rgb(0 37 49)
+	}
+}
+.ft-product-mesurment-content {
+	overflow: hidden;
+	border-radius: 8px;
+	padding: 60px 30px; 
+	background-color: #fff;
+	border-top: 5px solid #fde8e8;
+	box-shadow: 3.486px 39.848px 60px 0px rgba(0, 0, 0, 0.15);
+	.ft-pm-bg-img {
+		bottom: 0;
+		right: 0;
+	}
+}
+.ft-product-mesurment-tab-btn {
+	margin-bottom: 35px;
+	.nav {
+		justify-content: flex-end;
+	}
+	.nav-tabs .nav-item.show .nav-link, 
+	.nav-tabs .nav-link.active,
+	.nav-tabs .nav-link {
+		padding: 0;
+		border: none;
+		font-weight: 600;
+	}
+	.nav-tabs {
+		border-bottom: none;
+	}
+	.nav-link {
+		width: 170px;
+		height: 45px;
+		color: #032d57;
+		font-size: 15px;
+		font-weight: 600;
+		border-radius: 30px;
+		font-family: $heading;
+		transition: 300ms all ease;
+		&.active {
+			color: #fff;
+			background-color: $base-color;
+			box-shadow: 0px 21px 80px 0px rgba(236, 0, 0, 0.1);
+		}
+	}
+}
+.ft-product-mesurment-form-input {
+	.ft-pm-title {
+		color: #002a34;
+		font-size: 18px;
+		font-weight: 600;
+		margin-bottom: 15px;
+		font-family: $heading;
+	}
+	.ft-product-mesurment-form-input-area {
+		margin-bottom: 15px;
+		input,select {
+			width: 100%;
+			height: 50px;
+			padding-left: 20px;
+			margin-bottom: 20px;
+			border-radius: 30px;
+			border: 1px solid #d5d5d5;
+		}
+		select {
+			-webkit-appearance: none;
+		}
+		.ft-select-option {
+			z-index: 1;
+			&:after {
+				top: 14px;
+				right: 20px;
+				content: '\f078';
+				font-weight: 900;
+				position: absolute;
+				font-family: 'Font Awesome 5 Pro';
+			}
+		}
+	}
+	button {
+		color: #fff;
+		width: 100%;
+		height: 55px;
+		margin-top: 40px;
+		font-weight: 600;
+		border-radius: 30px;
+		border: none;
+		font-family: $heading;
+		transition: 500ms all ease;
+		background-color: #002a34;
+		&:hover {
+			background-color: $base-color;
+		}
+	}
+}
+.ft-product-mesurment-checkbox {
+	label {
+		cursor: pointer;
+		position: relative;
+		margin-right: 25px;
+		.slug {
+			color: #002a34;
+			margin-left: 30px;
+		}
+	}
+	.checkmark-circle {
+		&:before {
+			content: "";
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			border-radius: 100%;
+			left: 0px;
+			top: 1px;
+			border: 2px solid #002a34;
+		}
+		&:after {
+			left: 5px;
+			top: 6px;
+			width: 10px;
+			content: "";
+			height: 10px;
+			display: none;
+			position: absolute;
+			border-radius: 100%;
+			background-color: $base-color;
+		}
+	}
+	.condition {
+		display: none;
+		&:checked ~ .checkmark-circle:after {
+			display: block;
+		}
+		&:checked ~ .checkmark-circle:before {
+			border: 2px solid $base-color;
+		}
+	}
+}

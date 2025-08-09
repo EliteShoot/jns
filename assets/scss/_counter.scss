@@ -1,0 +1,60 @@
+.ft-counterup-section {
+	z-index: 1;
+	padding: 60px 0px 100px;
+	&:before {
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: -1;
+		content: '';
+		height: 130px;
+		position: absolute;
+		background-color: #f6f6f6;
+	}
+}
+.ft-counterup-innerbox {
+	margin-left: 40px;
+	border-radius: 8px;
+	background-color: #fff;
+	padding: 25px 25px 25px 65px;
+	box-shadow: 1.045px 9.945px 60px 0px rgba(68, 68, 68, 0.15);
+	.ft-counterup-icon {
+		top: 50%;
+		left: -40px;
+		z-index: 1;
+		width: 80px;
+		height: 80px;
+		position: absolute;
+		border-radius: 100%;
+		background-color: #fff;
+		transform: translateY(-50%);
+		box-shadow: 5.694px 12.79px 30px 0px rgba(234, 30, 0, 0.15);
+		&:before {
+			top: 8px;
+			left: 8px;
+			content: '';
+			z-index: -1;
+			width: 65px;
+			height: 65px;
+			position: absolute;
+			border-radius: 100%;
+			background-color: #00044b;
+		}
+		i {
+			color: #fff;
+			font-size: 35px;
+			line-height: .75;
+		}
+	}
+	.ft-counterup-text {
+		h3 {
+			color: #00044b;
+			font-size: 48px;
+			font-weight: 700;
+		}
+		p {
+			color: #00044b;
+			font-weight: 700;
+		}
+	}
+}

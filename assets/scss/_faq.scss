@@ -1,0 +1,236 @@
+.ft-faq-why-choose-us-section {
+	padding-bottom: 90px;
+	.ft-section-title-2 {
+		padding-bottom: 40px;
+		h2 {
+			padding-bottom: 0;
+		}
+	}
+}
+.ft-faq-content {
+	.accordion-button:not(.collapsed),
+	.accordion-item:first-of-type .accordion-button {
+		border:  none;
+		box-shadow: none;
+	}
+	.accordion-item:first-of-type {
+		border-radius: 0;
+	}
+	.accordion-item {
+		margin-bottom: 25px;
+		.accordion-button {
+			color: #003440;
+			font-size: 16px;
+			font-weight: 600;
+			padding: 18px 20px 17px;
+			&:hover,
+			&:focus {
+				outline: none;
+			}
+		}
+		.accordion-button:not(.collapsed) {
+			color: $base-color;
+			background-color: transparent;
+		}
+	}
+	.accordion-item:first-of-type .accordion-button {
+		border-radius: 0;
+	}
+	.accordion-button::after {
+		right: 15px;
+		color: #003440;
+		content: '\f067';
+		font-weight: 900;
+		font-size: 20px;
+		position: absolute;
+		background-image: none;
+		font-family: 'Font Awesome 5 Pro';
+	}
+	.accordion-button:not(.collapsed)::after {
+		content: '\f068';
+		color: $base-color;
+	}
+	.accordion-body {
+		padding-top: 5px;
+	}
+	.accordion-button:focus {
+		border: none;
+	}
+}
+.ft-why-choose-content-2 {
+	padding-left: 5px;
+}
+@keyframes icon-bounce {
+	0%, 100%, 20%, 50%, 80% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-10px);
+	}
+	60% {
+		transform: translateY(-5px);
+	}
+}
+.ft-why-choose-feature-list-item-2 {
+	padding: 25px 20px;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 1.91px 10.833px 50px 0px rgba(38, 38, 38, 0.15);
+	.ft-why-choose-feature-icon {
+		transition: 500ms all ease;
+		i {
+			font-size: 35px;
+			color: $base-color;
+		}
+	}
+	.ft-why-choose-feature-text {
+		h3 {
+			color: #003440;
+			font-size: 18px;
+			font-weight: 700;
+			padding-bottom: 10px;
+		}
+	}
+	&:hover {
+		.ft-why-choose-feature-icon {
+			animation: icon-bounce 0.8s ease-out infinite;
+		}
+	}
+}
+.ft-faq-page-top-content {
+	margin-bottom: 50px;
+	.ft-section-title-2 {
+		margin: 0;
+		max-width: 435px;
+		h2 {
+			padding: 0;
+		}
+	}
+}
+.ft-faq-contact-form-wrapper {
+	margin-top: 50px;
+}
+.ft-faq-contact-form-area {
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 1.736px 9.848px 60px 0px rgba(0, 52, 64, 0.15);
+	.ft-section-title-2 {
+		h2 {
+			padding-top: 0;
+			font-size: 24px;
+		}
+	}
+	input,textarea {
+		width: 100%;
+		height: 55px;
+		border-radius: 5px;
+		padding-left: 20px;
+		margin-bottom: 20px;
+		border: 1px solid #cbcbcb;
+		&::placeholder {
+			color: #c3c3c3;
+		}
+	}
+	textarea {
+		height: 130px;
+		padding-top: 10px;
+	}
+}
+.ft-faq-form-img {
+	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: 1.736px 9.848px 60px 0px rgba(0, 52, 64, 0.15);
+}
+.ft-submit-btn {
+	color: #fff;
+	height: 55px;
+	width: 200px;
+	border:  none;
+	margin-top: 10px;
+	font-weight: 600;
+	border-radius: 30px;
+	font-family: $heading;
+	transition: 500ms all ease;
+	background-color: $base-color;
+	i {
+		top: 3px;
+		position: relative;
+	}
+	&:hover {
+		color: #fff;
+		background-color: $color-2
+	}
+}
+.ft-thx-faq-section {
+	z-index: 1;
+	overflow: hidden;
+	padding: 110px 0px 80px;
+	.ft-thx-shape1 {
+		top: 0;
+		right: 0;
+		z-index: -1;
+	}
+}
+.ft-thx-featured-accordion {
+	padding-top: 20px;
+}
+.ft-thx-faq-text {
+	padding-left: 15px;
+	.accordion-header button {
+		font-size: 16px;
+		font-weight: 600;
+	}
+	.accordion-body {
+		padding: 0px 30px 30px;
+	}
+	.accordion-header {
+		button {
+			color: #14132B;
+			font-size: 20px;
+			font-weight: 700;
+		}
+		span {
+			width: 48px;
+			height: 48px;
+			margin-right: 20px;
+			border-radius: 100%;
+			background-color: #fff;
+			background: linear-gradient(99.89deg, rgba(76, 64, 247, 0.05) 0%, rgba(255, 0, 161, 0.05) 106.22%);
+			i {
+				line-height: .5;
+				font-size: 25px;
+				color: $base-color;
+			}
+		}
+	}
+	.accordion-button:focus {
+		border: none;
+		outline: none;
+		box-shadow: none;
+	}
+	.accordion-item {
+		border: none;
+		margin-bottom: 25px;
+		border-radius: 5px;
+		box-shadow: 0px 16px 50px 0px #97979733;
+	}
+	.accordion-button:not(.collapsed) {
+		box-shadow: none;
+		background-color: transparent;
+	}
+	.accordion-button::after {
+		right: 15px;
+		height: auto;
+		width: auto;
+		font-size: 15px;
+		content: '\f078';
+		font-weight: 900;
+		position: absolute;
+		background-image: none;
+		font-family: 'Font Awesome 5 Pro';
+	}
+	.accordion-button:not(.collapsed)::after {
+		content: '\f068';
+	}
+}

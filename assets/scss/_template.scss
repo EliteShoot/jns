@@ -1,0 +1,50 @@
+/*=========
+Font load
+===========*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,500,700|Roboto:100,300,400,500,700&display=swap');
+$body-font: 'Roboto';
+$heading: 'Poppins';
+
+/*=========
+Color Code
+===========*/
+$body-color: #888888;
+$base-color: #ea1e00;
+$base-color-2: #000d51;
+$base-color-3: #4ab9cf;
+$color-2: #00044b;
+$color-3: #01054c;
+%slider-dot {
+    margin-top: 55px;
+    position: static;
+    li {
+        width: 10px;
+        height: 10px;
+        margin: 0px 8px;
+        border-radius: 100%;
+        position: relative;
+        transition: .3s all ease;
+        background-color: $color-2;
+        &:before {
+            top: -5px;
+            left: -5px;
+            content: '';
+            opacity: 0;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            border-radius: 100%;
+            transition: .3s all ease;
+            border: 2px solid $base-color;
+        }
+        button {
+            display: none;
+        }
+        &.slick-active {
+            background-color: $base-color;
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+}

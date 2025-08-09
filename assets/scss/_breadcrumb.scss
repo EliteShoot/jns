@@ -1,0 +1,43 @@
+.ft-breadcrumb-section {
+	padding: 240px 0px 110px;
+	.background_overlay {
+		background-color: rgba(0, 62, 77, 0.7);
+	}
+}
+.ft-breadcrumb-content {
+	h2 {
+		color: #fff;
+		font-size: 36px;
+		font-weight: 700;
+		padding-bottom: 15px;
+	}
+	.ft-breadcrumb-list {
+		li {
+			color: #fff;
+			margin: 0px 20px;
+			position: relative;
+			&:after {
+				top: 2px;
+				right: -30px;
+				font-size: 14px;
+				content: '\f324';
+				font-weight: 900;
+				color: $base-color;
+				position: absolute;
+				font-family: 'Font Awesome 5 Pro';
+			}
+			&:last-child {
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+}
+.page-padding {
+	padding: 100px 0px;
+}
+.design-shape {
+	bottom: 0;
+	right: 0;
+}
