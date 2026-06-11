@@ -3891,7 +3891,7 @@ box-shadow:0 30px 100px rgba(0,0,0,.6);
 #jsaClose{
 position:absolute;
 right:20px;
-top:15px;
+top:20px;
 width:40px;
 height:40px;
 display:flex;
@@ -3900,9 +3900,26 @@ justify-content:center;
 background:#fff;
 color:#000;
 border-radius:50%;
-font-size:24px;
+font-size:20px;
+font-weight:700;
+line-height:1;
 cursor:pointer;
 z-index:10;
+padding:0;
+box-sizing:border-box;
+transition:all .25s ease;
+user-select:none;
+}
+
+#jsaClose:hover{
+background:#00E5C3;
+transform:scale(1.08);
+}
+
+#jsaClose:active{
+background:#00b89d;
+color:#fff;
+transform:scale(.92);
 }
 .jsaImage{
 width:45%;
