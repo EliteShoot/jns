@@ -12,12 +12,12 @@ EmbedBuilder
 
 const app = express();
 
-app.get("/", (req, res) => {
-    res.send("J&S Auto Rentals Support Bot Online");
-});
-
 app.use(cors());
 app.use(express.json());
+
+app.get("/", (req, res) => {
+res.send("J&S Auto Rentals Support Bot Online");
+});
 
 const client = new Client({
 intents: [
@@ -30,150 +30,146 @@ GatewayIntentBits.MessageContent
 const sessions = {};
 const replies = {};
 
-client.once("ready", () => {
+client.once("clientReady", () => {
 console.log(`Logged in as ${client.user.tag}`);
 });
 
 app.post("/api/chat", async (req, res) => {
 
+```
 try {
 
-```
-const {
-  sessionId,
-  name,
-  message
-} = req.body;
+    const {
+        sessionId,
+        name,
+        message
+    } = req.body;
 
-let session = sessions[sessionId];
+    let session = sessions[sessionId];
 
-const guild =
-  await client.guilds.fetch(
-    process.env.DISCORD_GUILD_ID
-  );
+    const guild =
+        await client.guilds.fetch(
+            process.env.DISCORD_GUILD_ID
+        );
 
-if (!session) {
+    if (!session) {
 
-  const ticketNumber =
-    Math.floor(
-      1000 + Math.random() * 9000
-    );
+        const ticketNumber =
+            Math.floor(
+                1000 + Math.random() * 9000
+            );
 
-  const channel =
-    await guild.channels.create({
-      name: "ticket-" + ticketNumber,
-      type: ChannelType.GuildText,
-      parent:
-        process.env.DISCORD_CATEGORY_ID
+        const channel =
+            await guild.channels.create({
+                name: "ticket-" + ticketNumber,
+                type: ChannelType.GuildText,
+                parent:
+                    process.env.DISCORD_CATEGORY_ID
+            });
+
+        sessions[sessionId] = {
+            channelId: channel.id,
+            ticketNumber
+        };
+
+        session = sessions[sessionId];
+    }
+
+    const channel =
+        await client.channels.fetch(
+            session.channelId
+        );
+
+    const embed =
+        new EmbedBuilder()
+            .setTitle("Website Message")
+            .setColor(0x00FFD1)
+            .addFields(
+                {
+                    name: "Name",
+                    value: name || "Unknown"
+                },
+                {
+                    name: "Session",
+                    value: sessionId
+                },
+                {
+                    name: "Message",
+                    value: message
+                }
+            )
+            .setTimestamp();
+
+    await channel.send({
+        embeds: [embed]
     });
 
-  sessions[sessionId] = {
-    channelId: channel.id,
-    ticketNumber
-  };
-
-  session = sessions[sessionId];
-}
-
-const channel =
-  await client.channels.fetch(
-    session.channelId
-  );
-
-const embed =
-  new EmbedBuilder()
-    .setTitle("Website Message")
-    .addFields(
-      {
-        name: "Name",
-        value: name || "Unknown"
-      },
-      {
-        name: "Session",
-        value: sessionId
-      },
-      {
-        name: "Message",
-        value: message
-      }
-    )
-    .setTimestamp();
-
-await channel.send({
-  embeds: [embed]
-});
-
-res.json({
-  success: true
-});
-```
+    res.json({
+        success: true
+    });
 
 } catch (err) {
 
-```
-console.error(err);
+    console.error(err);
 
-res.status(500).json({
-  success: false
-});
-```
+    res.status(500).json({
+        success: false,
+        error: err.message
+    });
 
 }
+```
 
 });
 
-app.get(
-"/api/messages/:sessionId",
-(req, res) => {
+app.get("/api/messages/:sessionId", (req, res) => {
 
 ```
 const sessionId =
-  req.params.sessionId;
+    req.params.sessionId;
 
 const msgs =
-  replies[sessionId] || [];
+    replies[sessionId] || [];
 
 replies[sessionId] = [];
 
 res.json(msgs);
 ```
 
-}
-);
+});
 
-client.on(
-"messageCreate",
-async message => {
+client.on("messageCreate", async message => {
 
 ```
+if (message.author.bot) return;
+
 if (
-  message.author.bot ||
-  !message.channel.name.startsWith("ticket-")
+    !message.channel.name ||
+    !message.channel.name.startsWith("ticket-")
 ) {
-  return;
+    return;
 }
 
 const sessionId =
-  Object.keys(sessions).find(
-    id =>
-      sessions[id].channelId ===
-      message.channel.id
-  );
+    Object.keys(sessions).find(
+        id =>
+            sessions[id].channelId ===
+            message.channel.id
+    );
 
 if (!sessionId) return;
 
 if (!replies[sessionId]) {
-  replies[sessionId] = [];
+    replies[sessionId] = [];
 }
 
 replies[sessionId].push({
-  text: message.content,
-  timestamp: Date.now()
+    text: message.content,
+    timestamp: Date.now()
 });
 ```
 
-}
-);
+});
 
 client.login(
 process.env.DISCORD_BOT_TOKEN
