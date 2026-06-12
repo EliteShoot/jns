@@ -30,7 +30,7 @@ GatewayIntentBits.MessageContent
 const sessions = {};
 const replies = {};
 
-client.once("clientReady", () => {
+client.once("ready", () => {
 console.log(`Logged in as ${client.user.tag}`);
 });
 
