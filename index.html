@@ -3764,18 +3764,30 @@ function sendMessage(){
             );
 
         },500);
+if(!sessionStorage.getItem("chatSession")){
 
-        fetch("https://jns-j4bb.onrender.com/api/chat",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                name:visitorName,
-                message:text,
-                categoryId:"1514485169015230606"
-            })
-        });
+    sessionStorage.setItem(
+        "chatSession",
+        crypto.randomUUID()
+    );
+
+}
+await fetch(
+"https://jns-j4bb.onrender.com/api/chat",
+{
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+        sessionId: sessionStorage.getItem("chatSession")
+            || crypto.randomUUID(),
+
+        name: visitorName,
+
+        message: text
+    })
+});
 
         setInterval(async () => {
 
