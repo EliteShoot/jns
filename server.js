@@ -10,6 +10,10 @@ ChannelType,
 EmbedBuilder
 } = require("discord.js");
 
+app.get("/", (req, res) => {
+    res.send("J&S Auto Rentals Support Bot Online");
+});
+
 const app = express();
 
 app.use(cors());
