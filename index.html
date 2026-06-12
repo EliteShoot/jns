@@ -3386,6 +3386,439 @@ a:focus {
 </style>
 </head>
     <body>
+      
+      <style>
+#support-tab{
+    position:fixed;
+    left:0;
+    top:70%;
+    transform:translateY(-50%);
+    width:42px;
+    height:170px;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.08);
+    border-left:none;
+    border-radius:0 12px 12px 0;
+    cursor:pointer;
+    z-index:99999;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+}
+
+#support-tab:hover{
+    background:rgba(0,0,0,.92);
+}
+
+#support-online,
+#support-text{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+}
+
+#support-online{
+    color:#00FFD1;
+    font-size:9px;
+    font-weight:600;
+    margin-bottom:6px;
+}
+
+#support-text{
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+#support-box{
+    position:fixed;
+    left:-360px;
+    top:50%;
+    transform:translateY(-50%);
+    width:340px;
+    height:560px;
+    background:#fff;
+    border-radius:0 18px 18px 0;
+    overflow:hidden;
+    z-index:99998;
+    transition:.3s ease;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+    font-family:Inter,sans-serif;
+}
+
+#support-box.active{
+    left:0;
+}
+
+#support-header{
+    background:#000;
+    color:#fff;
+    padding:18px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+#support-status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#00FFD1;
+    font-size:12px;
+    margin-bottom:8px;
+}
+
+.online-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#00FFD1;
+}
+
+#support-header h3{
+    margin:0;
+    font-size:18px;
+}
+
+#support-header p{
+    margin:4px 0 0;
+    opacity:.8;
+    font-size:12px;
+}
+
+#chat-area{
+    height:420px;
+    overflow-y:auto;
+    padding:15px;
+    background:#f7f7f7;
+}
+
+.bot-bubble{
+    background:#fff;
+    color:#000;
+    padding:12px 14px;
+    border-radius:16px;
+    margin-bottom:30px;
+    max-width:85%;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+    line-height:1.3;
+}
+
+.user-bubble{
+    background:#00FFD1;
+    color:#000;
+    padding:14px 16px;
+    border-radius:16px;
+    margin-bottom:10px;
+    margin-left:auto;
+    width:fit-content;
+    max-width:85%;
+    font-weight:400;
+}
+
+#quick-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
+    margin-top:17px;
+}
+
+.quick-btn{
+    border:1px solid #e5e5e5;
+    background:#000000;
+    padding:8px 12px;
+    font-weight:500;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:12px;
+    transition:.2s;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.quick-btn:hover{
+    background:#00FFD1;
+}
+
+#chat-input-bar{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    box-sizing:border-box;
+    display:flex;
+    gap:10px;
+    padding:12px;
+    background:#fff;
+    border-top:1px solid #eee;
+}
+
+#chatInput{
+    flex:1;
+    border:none;
+    outline:none;
+    background:#fff;
+    color:#000;
+    font-size:14px;
+}
+
+#chatInput::placeholder{
+    color:#888;
+}
+
+#chatSend{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#00FFD1;
+    color:#000;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+#chatSend:hover{
+    transform:scale(1.05);
+}
+
+#chatSend:active{
+    transform:scale(.98);
+}
+
+@media(max-width:768px){
+
+    #support-tab{
+        top:75%;
+        width:38px;
+        height:150px;
+    }
+
+    #support-box{
+        width:300px;
+        height:520px;
+    }
+
+    #chat-area{
+        height:385px;
+    }
+}
+</style>
+
+<div id="support-tab">
+
+    <div id="support-online">
+        ● ONLINE
+    </div>
+
+    <div id="support-text">
+        NEED HELP?
+    </div>
+
+</div>
+
+<div id="support-box">
+
+    <div id="support-header">
+
+        <div id="support-status">
+            <span class="online-dot"></span>
+            Team Online
+        </div>
+
+        <h3>J&S Auto Rentals</h3>
+
+        <p>Typically replies in under 5 minutes</p>
+
+    </div>
+
+    <div id="chat-area">
+
+        <div class="bot-bubble">
+            👋 Welcome to J&S Auto Rentals.
+        </div>
+
+        <div class="bot-bubble">
+            How can we help?
+        </div>
+
+        <div id="quick-actions">
+
+            <button class="quick-btn">
+                Vehicle Availability
+            </button>
+
+            <button class="quick-btn">
+                Airport Pickup
+            </button>
+
+            <button class="quick-btn">
+                Extend Rental
+            </button>
+
+            <button class="quick-btn">
+                Rental Pricing
+            </button>
+
+        </div>
+
+    </div>
+
+    <div id="chat-input-bar">
+
+        <input
+            id="chatInput"
+            type="text"
+            placeholder="Type a message..."
+            autocomplete="off"
+        >
+
+        <button id="chatSend">
+            ➜
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+const supportTab = document.getElementById("support-tab");
+const supportBox = document.getElementById("support-box");
+const chatArea = document.getElementById("chat-area");
+const chatInput = document.getElementById("chatInput");
+const chatSend = document.getElementById("chatSend");
+
+let visitorName = null;
+
+supportTab.addEventListener("click", () => {
+
+    supportBox.classList.toggle("active");
+
+    if(supportBox.classList.contains("active")){
+        supportTab.style.left = "-30px";
+    }else{
+        supportTab.style.left = "0";
+    }
+
+});
+
+function addBotMessage(text){
+
+    chatArea.innerHTML += `
+        <div class="bot-bubble">
+            ${text}
+        </div>
+    `;
+
+    chatArea.scrollTop = chatArea.scrollHeight;
+}
+
+function addUserMessage(text){
+
+    chatArea.innerHTML += `
+        <div class="user-bubble">
+            ${text}
+        </div>
+    `;
+
+    chatArea.scrollTop = chatArea.scrollHeight;
+}
+
+function sendMessage(){
+
+    const text = chatInput.value.trim();
+
+    if(!text) return;
+
+    addUserMessage(text);
+
+    chatInput.value = "";
+
+    if(!visitorName){
+
+        visitorName = text;
+
+        setTimeout(() => {
+
+            addBotMessage(
+                `We will get you help with ${visitorName}.`
+            );
+
+            addBotMessage(
+                `Someone will be with you shortly...`
+            );
+
+        },500);
+
+    }else{
+
+        setTimeout(() => {
+
+            addBotMessage(
+                `Thanks for contacting J&S Auto Rentals.`
+            );
+
+            addBotMessage(
+                `Please wait while a team member replies.`
+            );
+
+        },500);
+
+        fetch("https://jns-j4bb.onrender.com/api/chat",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                name:visitorName,
+                message:text,
+                categoryId:"1514485169015230606"
+            })
+        });
+
+        setInterval(async () => {
+
+  const res =
+    await fetch(
+      `https://jns-j4bb.onrender.com/api/messages/${sessionId}`
+    );
+
+  const messages =
+    await res.json();
+
+  messages.forEach(msg => {
+
+    addBotMessage(msg.text);
+
+  });
+
+},3000);
+    }
+}
+
+chatSend.addEventListener("click", sendMessage);
+
+chatInput.addEventListener("keypress", e => {
+
+    if(e.key === "Enter"){
+        sendMessage();
+    }
+
+});
+
+document.querySelectorAll(".quick-btn").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        chatInput.value = btn.innerText;
+        sendMessage();
+
+    });
+
+});
+</script>
+
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"><div class="App" x-file-name="App" x-line-number="33" x-column="4" x-component="div" x-id="App_33_4" x-dynamic="false"><div x-file-name="App" x-line-number="16" x-column="4" x-component="div" x-id="App_16_4" x-dynamic="false"><body>
   <!-- Header lives here -->
