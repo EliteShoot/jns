@@ -36,7 +36,7 @@ console.log(`Logged in as ${client.user.tag}`);
 
 app.post("/api/chat", async (req, res) => {
 
-```
+
 try {
 
     const {
@@ -118,13 +118,13 @@ try {
     });
 
 }
-```
+
 
 });
 
 app.get("/api/messages/:sessionId", (req, res) => {
 
-```
+
 const sessionId =
     req.params.sessionId;
 
@@ -134,13 +134,13 @@ const msgs =
 replies[sessionId] = [];
 
 res.json(msgs);
-```
+
 
 });
 
 client.on("messageCreate", async message => {
 
-```
+
 if (message.author.bot) return;
 
 if (
@@ -167,7 +167,7 @@ replies[sessionId].push({
     text: message.content,
     timestamp: Date.now()
 });
-```
+
 
 });
 
