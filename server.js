@@ -57,7 +57,7 @@ if (!session) {
 
   const channel =
     await guild.channels.create({
-      name: `ticket-${ticketNumber}`,
+      name: "ticket-" + ticketNumber,
       type: ChannelType.GuildText,
       parent:
         process.env.DISCORD_CATEGORY_ID
