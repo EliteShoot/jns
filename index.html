@@ -3736,8 +3736,15 @@ const chatSend = document.getElementById("chatSend");
 const quickActions = document.getElementById("quick-actions");
 const typingIndicator =
     document.getElementById("typing-indicator");
-const messageSound = new Audio("message.mp3");
+const messageSound = new Audio("assets/message.mp3");
 messageSound.volume = 0.4;
+
+function unlockAudio() {
+    messageSound.play().catch(() => {});
+    document.removeEventListener("click", unlockAudio);
+}
+
+document.addEventListener("click", unlockAudio);
 const supportClose =
     document.getElementById("support-close");
 let visitorName = null;
