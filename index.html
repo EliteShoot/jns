@@ -3441,6 +3441,7 @@ a:focus {
     margin-bottom:3px;
     font-weight:600;
 }
+
 #support-box{
     position:fixed;
     left:-360px;
@@ -3690,7 +3691,9 @@ a:focus {
             <button class="quick-btn">
                 Vehicle Availability
             </button>
-
+<button class="quick-btn contact-btn">
+    Contact Information
+</button>
             <button class="quick-btn">
                 Airport Pickup
             </button>
@@ -3733,7 +3736,8 @@ const chatSend = document.getElementById("chatSend");
 const quickActions = document.getElementById("quick-actions");
 const typingIndicator =
     document.getElementById("typing-indicator");
-
+const messageSound = new Audio("message.mp3");
+messageSound.volume = 0.4;
 const supportClose =
     document.getElementById("support-close");
 let visitorName = null;
@@ -3759,7 +3763,7 @@ supportTab.addEventListener("click", () => {
 
 });
 
-function addBotMessage(text, sender = "Bot") {
+function addBotMessage(text, sender = "Support Team") {
 
     const time =
         new Date().toLocaleTimeString([], {
@@ -3781,8 +3785,15 @@ function addBotMessage(text, sender = "Bot") {
 
     chatArea.appendChild(bubble);
 
-    chatArea.scrollTop =
-        chatArea.scrollHeight;
+    chatArea.scrollTop = chatArea.scrollHeight;
+
+    // 🔊 SOUND (THIS WAS MISSING)
+    try {
+        messageSound.currentTime = 0;
+        messageSound.play();
+    } catch (e) {
+        console.log("Sound blocked or file missing");
+    }
 }
 supportClose.addEventListener("click", () => {
 
@@ -3849,7 +3860,39 @@ async function sendToDiscord(message) {
         );
     }
 }
+let typingBubble = null;
 
+function showTyping() {
+
+    if (typingBubble) return;
+
+    typingBubble = document.createElement("div");
+    typingBubble.className = "typing-bubble";
+
+    typingBubble.innerHTML = `
+        Support is typing
+        <span class="typing-dots">
+            <span>.</span><span>.</span><span>.</span>
+        </span>
+    `;
+
+    chatArea.appendChild(typingBubble);
+    chatArea.scrollTop = chatArea.scrollHeight;
+}
+ try {
+        messageSound.currentTime = 0;
+        messageSound.play();
+    } catch (e) {
+        console.log("Sound blocked until user interacts");
+    }
+
+function hideTyping() {
+
+    if (!typingBubble) return;
+
+    typingBubble.remove();
+    typingBubble = null;
+}
 let welcomeShown = false;
 
 function sendMessage() {
@@ -3861,39 +3904,59 @@ function sendMessage() {
     addUserMessage(text);
 
     chatInput.value = "";
+if (quickActions) {
+    quickActions.remove();
+}
 
     // STEP 1: handle first-time visitor name
+    
     if (!visitorName) {
 
         visitorName = text;
 
         setTimeout(() => {
 
-            addBotMessage("We can definitely help you with that");
+            addBotMessage(
+                "We can definitely help you with that"
+            );
 
-            addBotMessage("Before we connect you to a team member, can you please give us your name?");
+            addBotMessage(
+                "Before we connect you to a team member, can you please give us your name?"
+            );
 
         }, 500);
 
         sendToDiscord(text);
+
         return;
     }
+
+    // 👇 PUT FAQ BOT HERE
+
 
     // STEP 2: hide quick actions
     if (quickActions) {
         quickActions.style.display = "none";
     }
 
+    // STEP 3: send to Discord
     sendToDiscord(text);
 
-    // STEP 3: welcome message (ONLY ONCE)
+    // STEP 4: welcome message
     if (!welcomeShown) {
 
         welcomeShown = true;
 
         setTimeout(() => {
-            addBotMessage("Nice to meet you 👋");
-            addBotMessage("Please wait for the next available team member to assist you...");
+
+            addBotMessage(
+                "Nice to meet you 👋"
+            );
+
+            addBotMessage(
+                "Please wait for the next available team member to assist you..."
+            );
+
         }, 500);
     }
 }
@@ -3913,7 +3976,9 @@ chatInput.addEventListener(
 
     }
 );
-
+document.addEventListener("click", () => {
+    messageSound.play().catch(() => {});
+}, { once: true });
 document
 .querySelectorAll(".quick-btn")
 .forEach(btn => {
