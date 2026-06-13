@@ -86,7 +86,7 @@ try {
             .setColor(0x00FFD1)
             .addFields(
                 {
-                    name: "Name",
+                    name: "Subject",
                     value: name || "Unknown"
                 },
                 {
