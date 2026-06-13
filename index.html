@@ -3798,13 +3798,14 @@ function sendMessage() {
 
         return;
     }
-
+let welcomeShown = false;
     if (quickActions) {
         quickActions.style.display = "none";
     }
 
     sendToDiscord(text);
-
+if (!welcomeShown) 
+    welcomeShown = true;
     setTimeout(() => {
 
         addBotMessage(
