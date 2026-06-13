@@ -3785,26 +3785,20 @@ function sendMessage() {
         visitorName = text;
 
         setTimeout(() => {
-
-            addBotMessage(
-                `We can definitely help you with that`
-            );
-
-            addBotMessage(
-                "Before we connect you to a team member, can you please give us your name?"
-            );
-
+            addBotMessage("Nice to meet you 👋");
+            addBotMessage("Please wait for the next available team member to assist you...");
         }, 500);
-
-        return;
     }
+
+    sendToDiscord(text);
+}
 let welcomeShown = false;
     if (quickActions) {
         quickActions.style.display = "none";
     }
 
     sendToDiscord(text);
-if (!welcomeShown) 
+if (!welcomeShown) {
     welcomeShown = true;
     setTimeout(() => {
 
