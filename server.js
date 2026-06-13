@@ -165,6 +165,7 @@ if (!replies[sessionId]) {
 
 replies[sessionId].push({
     text: message.content,
+    sender: "Support Team",
     timestamp: Date.now()
 });
 
