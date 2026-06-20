@@ -22,6 +22,11 @@ const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: 587,
     secure: false,
+    requireTLS: true,
+
+    logger: true,
+    debug: true,
+    
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
@@ -45,31 +50,7 @@ app.use(cors({
 app.options("*", cors());
 
 app.use(express.json());
-app.get("/api/test-email", async (req, res) => {
-    try {
 
-        console.log("HOST:", process.env.EMAIL_HOST);
-        console.log("USER:", process.env.EMAIL_USER);
-
-        await transporter.verify();
-
-        res.json({
-            success: true,
-            message: "SMTP connection successful"
-        });
-
-    } catch (err) {
-
-        console.error("VERIFY ERROR:", err);
-
-        res.status(500).json({
-            success: false,
-            error: err.message,
-            code: err.code
-        });
-
-    }
-});
 /* =========================
    BASIC ROUTES
 ========================= */
