@@ -5065,7 +5065,43 @@ Select Date & Time
 
 async function submitLead() {
 
-    if (
+    const name =
+        document.getElementById('name').value.trim();
+
+    const phone =
+        document.getElementById('phone').value.trim();
+
+    const email =
+        document.getElementById('email').value.trim();
+
+    if(name.length < 2){
+
+        alert('Please enter your full name.');
+        return;
+
+    }
+
+    const phoneRegex =
+        /^[0-9()+-\s]{10,20}$/;
+
+    if(!phoneRegex.test(phone)){
+
+        alert('Please enter a valid phone number.');
+        return;
+
+    }
+
+    const emailRegex =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailRegex.test(email)){
+
+        alert('Please enter a valid email address.');
+        return;
+
+    }
+
+    if(
         !document.getElementById(
             'consent'
         ).checked
@@ -5078,14 +5114,9 @@ async function submitLead() {
         return;
     }
 
-    lead.name =
-        document.getElementById('name').value;
-
-    lead.phone =
-        document.getElementById('phone').value;
-
-    lead.email =
-        document.getElementById('email').value;
+    lead.name = name;
+    lead.phone = phone;
+    lead.email = email;
 
     try {
 
@@ -5122,70 +5153,14 @@ async function submitLead() {
 
     } catch (err) {
 
+        console.error(err);
+
         alert(
             'Something went wrong. Please try again.'
         );
 
     }
 }
-const name =
-document.getElementById('name').value.trim();
-
-const phone =
-document.getElementById('phone').value.trim();
-
-const email =
-document.getElementById('email').value.trim();
-
-if(name.length < 2){
-
-```
-alert('Please enter your full name.');
-
-return;
-```
-
-}
-
-const phoneRegex =
-/^[0-9()+-\s]{10,20}$/;
-
-if(!phoneRegex.test(phone)){
-
-```
-alert('Please enter a valid phone number.');
-
-return;
-```
-
-}
-
-const emailRegex =
-/^[^\s@]+@[^\s@]+.[^\s@]+$/;
-
-if(!emailRegex.test(email)){
-
-```
-alert('Please enter a valid email address.');
-
-return;
-```
-
-}
-
-if(!document.getElementById('consent').checked){
-
-```
-alert('Please accept the consent checkbox.');
-
-return;
-```
-
-}
-
-lead.name = name;
-lead.phone = phone;
-lead.email = email;
 
 </script>
 
