@@ -10,28 +10,17 @@ const {
     EmbedBuilder
 } = require("discord.js");
 
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
 const app = express();
 
 /* =========================
    EMAIL
 ========================= */
-console.log("EMAIL_HOST:", process.env.EMAIL_HOST);
-const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: 587,
-    secure: false,
-    requireTLS: true,
 
-    logger: true,
-    debug: true,
-    
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+const resend = new Resend(
+    process.env.RESEND_API_KEY
+);
 
 /* =========================
    CORS
@@ -92,33 +81,32 @@ app.post("/api/chauffeur-request", async (req, res) => {
 
         const data = req.body;
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: "support@jsautorentals.com",
-            subject: "New Chauffeur Lead",
-            html: `
-                <h2>New Chauffeur Request</h2>
+await resend.emails.send({
+    from: "bookings@jsautorentals.com",
+    to: ["support@jsautorentals.com"],
+    subject: "New Chauffeur Lead",
+    html: `
+        <h2>New Chauffeur Request</h2>
 
-                <p><strong>Name:</strong> ${data.name || "-"}</p>
+        <p><strong>Name:</strong> ${data.name || "-"}</p>
 
-                <p><strong>Email:</strong> ${data.email || "-"}</p>
+        <p><strong>Email:</strong> ${data.email || "-"}</p>
 
-                <p><strong>Phone:</strong> ${data.phone || "-"}</p>
+        <p><strong>Phone:</strong> ${data.phone || "-"}</p>
 
-                <p><strong>Service:</strong> ${data.service || "-"}</p>
+        <p><strong>Service:</strong> ${data.service || "-"}</p>
 
-                <p><strong>Vehicle:</strong> ${data.vehicle || "-"}</p>
+        <p><strong>Vehicle:</strong> ${data.vehicle || "-"}</p>
 
-                <p><strong>Passengers:</strong> ${data.passengers || "-"}</p>
+        <p><strong>Passengers:</strong> ${data.passengers || "-"}</p>
 
-                <p><strong>Date:</strong> ${data.date || "-"}</p>
+        <p><strong>Date:</strong> ${data.date || "-"}</p>
 
-                <p><strong>Pickup:</strong> ${data.pickup || "-"}</p>
+        <p><strong>Pickup:</strong> ${data.pickup || "-"}</p>
 
-                <p><strong>Dropoff:</strong> ${data.dropoff || "-"}</p>
-            `
-        });
-
+        <p><strong>Dropoff:</strong> ${data.dropoff || "-"}</p>
+    `
+});
         res.json({
             success: true
         });
