@@ -5131,13 +5131,16 @@ async function submitLead() {
             }
         );
 
+
         if (!response.ok) {
             throw new Error();
         }
-
+    else if (currentStep === 8) 
         document.getElementById(
+          
             'chauffeurStep'
         ).innerHTML = `
+        
 
         <h2 class="question-title">
             Request Received
