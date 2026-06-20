@@ -34,7 +34,7 @@ await transporter.sendMail({
 
 from: process.env.EMAIL_USER,
 
-to: 'YOUR_EMAIL@gmail.com',
+to: 'support@jsautorentals.com',
 
 subject: 'New Chauffeur Lead',
 
