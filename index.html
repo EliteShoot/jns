@@ -163,6 +163,339 @@ if(window.self!==window.top){
     transform:translateX(4px);
   }
 }
+.chauffeur-luxury{
+position:relative;
+overflow:hidden;
+border-radius:0px;
+margin-top:80px;
+min-height:500px;
+border:1px solid rgba(255,255,255,.08);
+background:#121212;
+}
+.consent-wrapper{
+display:flex;
+align-items:flex-start;
+gap:14px;
+margin:20px 0;
+cursor:pointer;
+}
+
+.consent-wrapper input{
+display:none;
+}
+
+.consent-checkmark{
+width:22px;
+height:22px;
+min-width:22px;
+
+
+border:1px solid rgba(255,255,255,.15);
+background:#171717;
+
+border-radius:6px;
+
+margin-top:2px;
+
+position:relative;
+
+
+}
+
+.consent-wrapper input:checked + .consent-checkmark{
+
+
+background:#00FFD1;
+border-color:#00FFD1;
+
+
+}
+
+.consent-wrapper input:checked + .consent-checkmark::after{
+
+
+content:"✓";
+
+position:absolute;
+inset:0;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:black;
+font-weight:700;
+font-size:13px;
+
+
+}
+
+.consent-text{
+color:rgba(255,255,255,.75);
+line-height:1.6;
+font-size:14px;
+}
+
+.invalid-field{
+    border:1px solid #ff4d4d !important;
+}
+.chauffeur-bg{
+position:absolute;
+inset:0;
+}
+
+.chauffeur-bg img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.chauffeur-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(
+90deg,
+rgba(0,0,0,.92) 0%,
+rgba(0,0,0,.75) 45%,
+rgba(0,0,0,.35) 100%
+);
+}
+
+.chauffeur-inner{
+position:relative;
+z-index:2;
+max-width:650px;
+padding:70px;
+}
+
+.chauffeur-eyebrow{
+color:#00FFD1;
+font-size:13px;
+font-weight:600;
+letter-spacing:3px;
+}
+
+.chauffeur-inner h2{
+font-size:56px;
+line-height:1.1;
+margin:20px 0;
+}
+
+.chauffeur-inner p{
+color:rgba(255,255,255,.75);
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.chauffeur-features{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:35px;
+}
+
+.chauffeur-features span{
+padding:10px 18px;
+border-radius:999px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.chauffeur-launch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    color: #00FFD1; /* matches your theme */
+    transition: transform 0.2s ease;
+}
+
+/* arrow animation on hover */
+.chauffeur-launch svg {
+    transition: transform 0.2s ease;
+}
+
+.chauffeur-launch:hover svg {
+    transform: translateX(4px);
+    color: #ffff
+}
+
+/* optional: slight lift like luxury UI */
+.chauffeur-launch:hover {
+    transform: translateY(-1px);
+    color: #ffff
+}
+#chauffeurModal{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.92);
+    backdrop-filter:blur(14px);
+    z-index:999999;
+    padding:20px;
+}
+
+.chauffeur-modal-card{
+
+    width:100%;
+    max-width:900px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#121212;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    position:relative;
+
+}
+
+.chauffeur-close{
+position:absolute;
+right:25px;
+top:55px;
+font-size:32px;
+color:white;
+cursor:pointer;
+}
+
+.chauffeur-progress{
+height:6px;
+background:rgba(255,255,255,.08);
+border-radius:999px;
+overflow:hidden;
+margin-bottom:40px;
+}
+
+.chauffeur-progress-fill{
+height:100%;
+width:0%;
+background:#00FFD1;
+transition:.35s;
+}
+
+.question-title{
+font-size:42px;
+margin-bottom:30px;
+}
+
+.choice-grid{
+display:grid;
+gap:15px;
+}
+
+.choice-card{
+background:#171717;
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+padding:28px;
+cursor:pointer;
+transition:.35s;
+}
+
+.choice-card:hover{
+transform:translateY(-3px);
+border-color:rgba(0,255,209,.4);
+}
+
+.vehicle-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.vehicle-card{
+background:#171717;
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+overflow:hidden;
+cursor:pointer;
+transition:.35s;
+}
+
+.vehicle-card:hover{
+transform:translateY(-3px);
+border-color:rgba(0,255,209,.4);
+}
+
+.vehicle-card img{
+width:100%;
+height:170px;
+object-fit:cover;
+}
+
+.vehicle-card h4{
+padding:20px;
+text-align:center;
+}
+
+.luxury-input{
+width:100%;
+padding:18px;
+background:#171717;
+border:1px solid rgba(255,255,255,.08);
+border-radius:14px;
+color:white;
+margin-bottom:15px;
+}
+.luxury-input[type="datetime-local"]{
+    cursor:pointer;
+}
+
+.luxury-input::-webkit-calendar-picker-indicator{
+    cursor:pointer;
+    opacity:.9;
+    filter:invert(1);
+}
+.submit-btn{
+width:100%;
+padding:18px;
+background:#00FFD1;
+color:black;
+font-weight:700;
+border-radius:14px;
+}
+
+.back-btn{
+margin-bottom:25px;
+color:#00FFD1;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.vehicle-grid{
+grid-template-columns:1fr;
+}
+
+.chauffeur-inner{
+padding:35px;
+}
+
+.chauffeur-inner h2{
+font-size:36px;
+}
+
+.question-title{
+font-size:30px;
+}
+
+}
 
 /* Featured Escalade */
 .featured-escalade{display:none;}
@@ -3495,6 +3828,8 @@ a:focus {
 
         <a href="#fleet">Fleet →</a>
 
+        <a href="#chauffeur">Chauffeur →</a>
+
         <a href="#contact">Contact →</a>
 <a
 href="https://turo.com/us/en/drivers/48523299"
@@ -4150,6 +4485,7 @@ async function sendToDiscord(message) {
         );
     }
 }
+
 let typingBubble = null;
 
 function showTyping() {
@@ -4317,6 +4653,540 @@ messages.forEach(msg => {
     }
 
 }, 3000);
+</script>
+<script>
+
+let currentStep = 1;
+const lead = {};
+
+function openChauffeurModal() {
+    document.getElementById('chauffeurModal').style.display = 'flex';
+    currentStep = 1;
+    renderStep();
+}
+
+function closeChauffeurModal() {
+    document.getElementById('chauffeurModal').style.display = 'none';
+}
+function saveDate(){
+
+const input =
+document.getElementById('rideDate');
+
+if(!input.value){
+
+alert('Please select a date and time.');
+
+return;
+
+}
+
+lead.date = input.value;
+
+currentStep++;
+
+renderStep();
+
+}
+function getFleetVehicles() {
+
+    const vehicles = [];
+
+    document.querySelectorAll('.fleet-card').forEach(card => {
+
+        const img =
+            card.querySelector('img')?.src || '';
+
+        const name =
+            card.querySelector('h3')?.textContent.trim() || '';
+
+        if(name) {
+            vehicles.push({
+                name,
+                image: img
+            });
+
+        }
+
+    });
+
+    return vehicles;
+}
+
+function updateProgress() {
+
+    const totalSteps = 7;
+
+    const progress =
+        ((currentStep - 1) / totalSteps) * 100;
+
+    document.querySelector(
+        '.chauffeur-progress-fill'
+    ).style.width = progress + '%';
+
+}
+
+function renderStep() {
+
+    updateProgress();
+
+    let html = '';
+
+    if (currentStep > 1) {
+
+        html += `
+        <div class="back-btn"
+             onclick="currentStep--;renderStep();">
+             ← Back
+        </div>
+        `;
+
+    }
+
+    /* STEP 1 */
+
+    if (currentStep === 1) {
+
+        html += `
+
+        <h2 class="question-title">
+            What service do you need?
+        </h2>
+
+        <div class="choice-grid">
+
+            <div class="choice-card"
+                 onclick="
+                 lead.service='Airport Transfer';
+                 currentStep++;
+                 renderStep();
+                 ">
+
+                <h3>Airport Transfer</h3>
+
+<p style="font-size: 13px; color: #888;">
+    Transportation to or from the airport.
+</p>
+
+            </div>
+
+            <div class="choice-card"
+                 onclick="
+                 lead.service='Hourly Chauffeur';
+                 currentStep++;
+                 renderStep();
+                 ">
+
+                <h3>Hourly Chauffeur</h3>
+
+                <p style="font-size: 13px; color: #888;">
+                    Private driver available by the hour.
+                </p>
+
+            </div>
+
+        </div>
+
+        `;
+    }
+
+    /* STEP 2 */
+
+    else if (currentStep === 2) {
+
+        const vehicles = getFleetVehicles();
+
+        html += `
+        <h2 class="question-title">
+            Choose Your Vehicle
+        </h2>
+
+        <div class="vehicle-grid">
+        `;
+
+        vehicles.forEach(vehicle => {
+
+            html += `
+
+            <div class="vehicle-card"
+
+                onclick="
+                lead.vehicle='${vehicle.name}';
+                currentStep++;
+                renderStep();
+                ">
+
+                <img src="${vehicle.image}">
+
+                <h4>
+                    ${vehicle.name}
+                </h4>
+
+            </div>
+
+            `;
+
+        });
+
+        html += `</div>`;
+    }
+
+    /* STEP 3 */
+
+    else if (currentStep === 3) {
+
+        html += `
+
+        <h2 class="question-title">
+            How Many Passengers?
+        </h2>
+
+        <div class="choice-grid">
+
+            <div class="choice-card"
+                 onclick="
+                 lead.passengers='1-2';
+                 currentStep++;
+                 renderStep();
+                 ">
+                 1-2 Passengers
+            </div>
+
+            <div class="choice-card"
+                 onclick="
+                 lead.passengers='3-5';
+                 currentStep++;
+                 renderStep();
+                 ">
+                 3-5 Passengers
+            </div>
+
+            <div class="choice-card"
+                 onclick="
+                 lead.passengers='6+';
+                 currentStep++;
+                 renderStep();
+                 ">
+                 6+ Passengers
+            </div>
+
+        </div>
+
+        `;
+    }
+
+    /* STEP 4 */
+
+    else if (currentStep === 4) {
+
+        html += `
+
+        <h2 class="question-title">
+            Pickup Location
+        </h2>
+
+        <input
+            id="pickup"
+            class="luxury-input"
+            placeholder="Enter pickup address">
+            
+
+        <button class="submit-btn"
+
+onclick="
+
+const pickup =
+document.getElementById('pickup').value.trim();
+
+if(pickup.length < 10){
+
+    alert('Please enter a valid pickup address.');
+
+    return;
+}
+
+lead.pickup = pickup;
+
+currentStep++;
+
+renderStep();
+
+">
+
+            Continue
+
+        </button>
+
+        `;
+    }
+
+    /* STEP 5 */
+
+    else if (currentStep === 5) {
+
+        html += `
+
+        <h2 class="question-title">
+            Dropoff Location
+        </h2>
+
+        <input
+            id="dropoff"
+            class="luxury-input"
+            placeholder="Enter dropoff address">
+
+        <button class="submit-btn"
+
+onclick="
+
+const dropoff =
+document.getElementById('dropoff').value.trim();
+
+if(dropoff.length < 10){
+
+    alert('Please enter a valid dropoff address.');
+
+    return;
+}
+
+lead.dropoff = dropoff;
+
+currentStep++;
+
+renderStep();
+
+">
+
+            Continue
+
+        </button>
+
+        `;
+    }
+
+    /* STEP 6 */
+
+else if (currentStep === 6) {
+function openDatePicker(input){
+
+    if(input.showPicker){
+        input.showPicker();
+    }
+
+}
+const minDateObj = new Date();
+
+minDateObj.setHours(
+    minDateObj.getHours() + 2
+);
+
+const minDate =
+minDateObj.toISOString().slice(0,16);
+
+html += `
+
+<h2 class="question-title">
+Select Date & Time
+</h2>
+
+<input
+    id="rideDate"
+    type="datetime-local"
+    class="luxury-input"
+    min="${minDate}"
+    onfocus="this.showPicker && this.showPicker()">
+
+<button
+    class="submit-btn"
+
+    onclick="saveDate()">
+
+    Continue
+
+</button>
+
+`;
+
+}
+
+    /* STEP 7 */
+
+    else if (currentStep === 7) {
+
+        html += `
+
+        <h2 class="question-title">
+            Contact Information
+        </h2>
+
+        <input
+            id="name"
+            class="luxury-input"
+            placeholder="Full Name">
+
+        <input
+            id="phone"
+            class="luxury-input"
+            placeholder="Phone Number">
+
+        <input
+            id="email"
+            class="luxury-input"
+            placeholder="Email Address">
+
+        <label style="
+            display:flex;
+            gap:10px;
+            margin-bottom:20px;
+            align-items:flex-start;
+        ">
+
+ <label class="consent-wrapper">
+    <input type="checkbox" id="consent" required>
+<span class="consent-checkmark"></span> <span class="consent-text"> I agree to be contacted regarding this transportation request and understand that submitting this form does not guarantee a reservation. </span></label>
+
+        </label>
+
+        <button
+            class="submit-btn"
+            onclick="submitLead()">
+
+            Submit Request
+
+        </button>
+
+        `;
+    }
+
+    document.getElementById(
+        'chauffeurStep'
+    ).innerHTML = html;
+}
+
+async function submitLead() {
+
+    if (
+        !document.getElementById(
+            'consent'
+        ).checked
+    ) {
+
+        alert(
+            'Please accept the consent checkbox.'
+        );
+
+        return;
+    }
+
+    lead.name =
+        document.getElementById('name').value;
+
+    lead.phone =
+        document.getElementById('phone').value;
+
+    lead.email =
+        document.getElementById('email').value;
+
+    try {
+
+        const response = await fetch(
+            '/api/chauffeur-request',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(lead)
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error();
+        }
+
+        document.getElementById(
+            'chauffeurStep'
+        ).innerHTML = `
+
+        <h2 class="question-title">
+            Request Received
+        </h2>
+
+        <p>
+            Thank you for your inquiry.
+            A member of our team will contact
+            you shortly.
+        </p>
+
+        `;
+
+    } catch (err) {
+
+        alert(
+            'Something went wrong. Please try again.'
+        );
+
+    }
+}
+const name =
+document.getElementById('name').value.trim();
+
+const phone =
+document.getElementById('phone').value.trim();
+
+const email =
+document.getElementById('email').value.trim();
+
+if(name.length < 2){
+
+```
+alert('Please enter your full name.');
+
+return;
+```
+
+}
+
+const phoneRegex =
+/^[0-9()+-\s]{10,20}$/;
+
+if(!phoneRegex.test(phone)){
+
+```
+alert('Please enter a valid phone number.');
+
+return;
+```
+
+}
+
+const emailRegex =
+/^[^\s@]+@[^\s@]+.[^\s@]+$/;
+
+if(!emailRegex.test(email)){
+
+```
+alert('Please enter a valid email address.');
+
+return;
+```
+
+}
+
+if(!document.getElementById('consent').checked){
+
+```
+alert('Please accept the consent checkbox.');
+
+return;
+```
+
+}
+
+lead.name = name;
+lead.phone = phone;
+lead.email = email;
+
 </script>
 
         <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -4527,53 +5397,7 @@ messages.forEach(msg => {
 }
 </style>
 
-<div class="hidden lg:block fleet-card group relative bg-[#121212] overflow-hidden transition-all duration-300 hover:transform hover:scale-[1.02] rounded-2xl border border-white/10 hover:border-[#00FFD1]/30 hover:shadow-2xl hover:shadow-[#00FFD1]/10">
-    <div class="relative h-48 overflow-hidden">
-        <img
-            src="https://images.turo.com/media/vehicle/images/LhylofkUS9GD3GtHtqdtZA.1242x745.png"
-            alt="2026 Cadillac Escalade ESV Sport"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent"></div>
-    </div>
 
-    <div class="p-5">
-        <div class="mb-2">
-            <span class="text-[#00FFD1] text-sm font-medium tracking-wide uppercase">
-                Luxury SUV
-            </span>
-        </div>
-
-        <h3 class="text-white text-xl font-semibold mb-2">
-            2026 Cadillac Escalade ESV
-        </h3>
-
-        <p class="text-white/70 text-base mb-4">
-            The ultimate family luxury SUV with unmatched space and comfort.
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-white/60 text-sm px-3 py-1 rounded-full bg-white/5 border border-white/10">Most Space For Families</span>
-            <span class="text-white/60 text-sm px-3 py-1 rounded-full bg-white/5 border border-white/10">Extended Luxury</span>
-            <span class="text-white/60 text-sm px-3 py-1 rounded-full bg-white/5 border border-white/10">Road Trip Ready</span>
-        </div>
-
-        <div class="flex items-center justify-between pt-4 border-t border-white/25">
-            <a href="https://turo.com/us/en/suv-rental/united-states/troy-mi/cadillac/escalade-esv/3744595"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 text-[#00FFD1] hover:text-white transition-colors duration-300 text-base font-medium">
-                Reserve
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-</div>
 
 <div class="featured-escalade">
     <div class="featured-escalade-image">
@@ -4714,53 +5538,6 @@ messages.forEach(msg => {
 
     </div>
     
-    <div class="hidden lg:block fleet-card group relative bg-[#121212] overflow-hidden transition-all duration-300 hover:transform hover:scale-[1.02] rounded-2xl border border-white/10 hover:border-[#00FFD1]/30 hover:shadow-2xl hover:shadow-[#00FFD1]/10">
-    <div class="relative h-48 overflow-hidden">
-        <img
-            src="https://images.turo.com/media/vehicle/images/LhylofkUS9GD3GtHtqdtZA.1242x745.png"
-            alt="2026 Cadillac Escalade ESV Sport"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent"></div>
-    </div>
-
-    <div class="p-5">
-        <div class="mb-2">
-            <span class="text-[#00FFD1] text-sm font-medium tracking-wide uppercase">
-                Luxury SUV
-            </span>
-        </div>
-
-        <h3 class="text-white text-xl font-semibold mb-2">
-            2026 Cadillac Escalade ESV 
-        </h3>
-
-        <p class="text-white/70 text-base mb-4">
-            The ultimate family luxury SUV with unmatched space and comfort.
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-white/60 text-sm px-3 py-1 rounded-full bg-white/5 border border-white/10">Most Space For Families</span>
-            <span class="text-white/60 text-sm px-3 py-1 rounded-full bg-white/5 border border-white/10">Extended Luxury</span>
-            <span class="text-white/60 text-sm px-3 py-1 rounded-full bg-white/5 border border-white/10">Road Trip Ready</span>
-        </div>
-
-        <div class="flex items-center justify-between pt-4 border-t border-white/25">
-            <a href="https://turo.com/us/en/suv-rental/united-states/troy-mi/cadillac/escalade-esv/3744595"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 text-[#00FFD1] hover:text-white transition-colors duration-300 text-base font-medium">
-                Reserve
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-</div>
 
 <div class="featured-escalade">
     <div class="featured-escalade-image">
@@ -4816,6 +5593,73 @@ messages.forEach(msg => {
  
 
     </div>
+</div>
+</section><section id="chauffeur" class="chauffeur-luxury">
+
+
+<div class="chauffeur-bg">
+    <img src="https://i.imgur.com/CimJQyE.jpeg" alt="Private Chauffeur Service">
+</div>
+
+<div class="chauffeur-overlay"></div>
+
+<div class="chauffeur-inner">
+
+    <span class="chauffeur-eyebrow">
+        PRIVATE TRANSPORTATION
+    </span>
+
+    <h2>
+        Private Chauffeur & Airport Transfers
+    </h2>
+
+    <p>
+        Experience luxury transportation throughout Metro Detroit with our professional chauffeur services. Whether you're traveling to DTW Airport, attending a business meeting, wedding, sporting event, or need a private driver for the day, our luxury fleet delivers a first-class experience.
+    </p>
+
+    <div class="chauffeur-features">
+        <span>DTW Airport</span>
+        <span>PTK Airport</span>
+        <span>Custom Pickup</span>        
+        <span>Hourly Chauffeur</span>
+        <span>Executive Travel</span>
+        <span>Luxury Fleet</span>
+    </div>
+
+<button class="chauffeur-launch" onclick="openChauffeurModal()">
+    Request Transportation
+    <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+        <path d="M5 12H19M19 12L13 6M19 12L13 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </svg>
+</button>
+
+</div>
+
+
+</section>
+
+<div id="chauffeurModal">
+
+
+<div class="chauffeur-modal-card">
+
+    <button class="chauffeur-close" onclick="closeChauffeurModal()">
+        ×
+    </button>
+
+    <div class="chauffeur-progress">
+        <div class="chauffeur-progress-fill"></div>
+    </div>
+
+    <div id="chauffeurStep"></div>
+
+</div>
+
+
 </div>
 </section><section id="how-it-works" class="bg-[#121212] py-24" x-file-name="HowItWorks" x-line-number="27" x-column="4" x-component="section" x-id="HowItWorks_27_4" x-dynamic="false"><div class="max-w-6xl mx-auto px-[7.6923%]" x-file-name="HowItWorks" x-line-number="28" x-column="6" x-component="div" x-id="HowItWorks_28_6" x-dynamic="false"><div class="text-center mb-16" x-file-name="HowItWorks" x-line-number="30" x-column="8" x-component="div" x-id="HowItWorks_30_8" x-dynamic="false"><h2 class="text-white mb-4" x-file-name="HowItWorks" x-line-number="31" x-column="10" x-component="h2" x-id="HowItWorks_31_10" x-dynamic="false" style="font-size: 48px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;">How It Works</h2><p class="text-white/85 max-w-2xl mx-auto" x-file-name="HowItWorks" x-line-number="42" x-column="10" x-component="p" x-id="HowItWorks_42_10" x-dynamic="false" style="font-size: 20px; font-weight: 500; line-height: 1.5; letter-spacing: 0px;">Three simple steps to your luxury driving experience</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-12" x-file-name="HowItWorks" x-line-number="56" x-column="8" x-component="div" x-id="HowItWorks_56_8" x-dynamic="true" x-source-type="computed" x-source-editable="false"><div class="relative text-center" x-file-name="HowItWorks" x-line-number="60" x-column="14" x-component="div" x-id="HowItWorks_60_14" x-dynamic="false"><div class="absolute -top-6 left-1/2 transform -translate-x-1/2" x-file-name="HowItWorks" x-line-number="62" x-column="16" x-component="div" x-id="HowItWorks_62_16" x-dynamic="false"><div class="w-12 h-12 flex items-center justify-center bg-[#00FFD1] text-black text-xl font-bold rounded-full" x-file-name="HowItWorks" x-line-number="63" x-column="18" x-component="div" x-id="HowItWorks_63_18" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="step" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item" style="">1</div></div><div class="pt-10 mb-6 flex justify-center" x-file-name="HowItWorks" x-line-number="71" x-column="16" x-component="div" x-id="HowItWorks_71_16" x-dynamic="false"><div class="w-20 h-20 flex items-center justify-center bg-black/50 rounded-2xl" x-file-name="HowItWorks" x-line-number="72" x-column="18" x-component="div" x-id="HowItWorks_72_18" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search text-[#00FFD1]" aria-hidden="true" x-file-name="HowItWorks" x-line-number="73" x-column="20" x-component="IconComponent" x-id="HowItWorks_73_20" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></div></div><h3 class="text-white text-2xl font-semibold mb-3" x-file-name="HowItWorks" x-line-number="78" x-column="16" x-component="h3" x-id="HowItWorks_78_16" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="title" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item">Browse Our Fleet</h3><p class="text-white/70 text-base leading-relaxed" x-file-name="HowItWorks" x-line-number="81" x-column="16" x-component="p" x-id="HowItWorks_81_16" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="description" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item">Explore our collection of premium luxury vehicles</p></div><div class="relative text-center" x-file-name="HowItWorks" x-line-number="60" x-column="14" x-component="div" x-id="HowItWorks_60_14" x-dynamic="false"><div class="absolute -top-6 left-1/2 transform -translate-x-1/2" x-file-name="HowItWorks" x-line-number="62" x-column="16" x-component="div" x-id="HowItWorks_62_16" x-dynamic="false"><div class="w-12 h-12 flex items-center justify-center bg-[#00FFD1] text-black text-xl font-bold rounded-full" x-file-name="HowItWorks" x-line-number="63" x-column="18" x-component="div" x-id="HowItWorks_63_18" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="step" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item" style="">2</div></div><div class="pt-10 mb-6 flex justify-center" x-file-name="HowItWorks" x-line-number="71" x-column="16" x-component="div" x-id="HowItWorks_71_16" x-dynamic="false"><div class="w-20 h-20 flex items-center justify-center bg-black/50 rounded-2xl" x-file-name="HowItWorks" x-line-number="72" x-column="18" x-component="div" x-id="HowItWorks_72_18" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar text-[#00FFD1]" aria-hidden="true" x-file-name="HowItWorks" x-line-number="73" x-column="20" x-component="IconComponent" x-id="HowItWorks_73_20" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></div></div><h3 class="text-white text-2xl font-semibold mb-3" x-file-name="HowItWorks" x-line-number="78" x-column="16" x-component="h3" x-id="HowItWorks_78_16" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="title" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item">Book on Turo</h3><p class="text-white/70 text-base leading-relaxed" x-file-name="HowItWorks" x-line-number="81" x-column="16" x-component="p" x-id="HowItWorks_81_16" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="description" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item">Secure your reservation through our trusted Turo platform</p></div><div class="relative text-center" x-file-name="HowItWorks" x-line-number="60" x-column="14" x-component="div" x-id="HowItWorks_60_14" x-dynamic="false"><div class="absolute -top-6 left-1/2 transform -translate-x-1/2" x-file-name="HowItWorks" x-line-number="62" x-column="16" x-component="div" x-id="HowItWorks_62_16" x-dynamic="false"><div class="w-12 h-12 flex items-center justify-center bg-[#00FFD1] text-black text-xl font-bold rounded-full" x-file-name="HowItWorks" x-line-number="63" x-column="18" x-component="div" x-id="HowItWorks_63_18" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="step" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item" style="">3</div></div><div class="pt-10 mb-6 flex justify-center" x-file-name="HowItWorks" x-line-number="71" x-column="16" x-component="div" x-id="HowItWorks_71_16" x-dynamic="false"><div class="w-20 h-20 flex items-center justify-center bg-black/50 rounded-2xl" x-file-name="HowItWorks" x-line-number="72" x-column="18" x-component="div" x-id="HowItWorks_72_18" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-car text-[#00FFD1]" aria-hidden="true" x-file-name="HowItWorks" x-line-number="73" x-column="20" x-component="IconComponent" x-id="HowItWorks_73_20" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></div></div><h3 class="text-white text-2xl font-semibold mb-3" x-file-name="HowItWorks" x-line-number="78" x-column="16" x-component="h3" x-id="HowItWorks_78_16" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="title" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item">Drive in Style</h3><p class="text-white/70 text-base leading-relaxed" x-file-name="HowItWorks" x-line-number="81" x-column="16" x-component="p" x-id="HowItWorks_81_16" x-dynamic="true" x-source-type="static-imported" x-source-var="steps" x-source-file-abs="/app/frontend/src/components/HowItWorks.jsx" x-source-line="5" x-source-path="description" x-source-editable="true" x-array-var="steps" x-array-line="5" x-array-item-param="item">Pick up your luxury vehicle and experience the state</p></div></div></div></section><section class="bg-black py-24" x-file-name="WhyChooseUs" x-line-number="29" x-column="4" x-component="section" x-id="WhyChooseUs_29_4" x-dynamic="false"><div class="max-w-7xl mx-auto px-[7.6923%]" x-file-name="WhyChooseUs" x-line-number="30" x-column="6" x-component="div" x-id="WhyChooseUs_30_6" x-dynamic="false"><div class="text-center mb-16" x-file-name="WhyChooseUs" x-line-number="32" x-column="8" x-component="div" x-id="WhyChooseUs_32_8" x-dynamic="false"><h2 class="text-white mb-4" x-file-name="WhyChooseUs" x-line-number="33" x-column="10" x-component="h2" x-id="WhyChooseUs_33_10" x-dynamic="false" style="font-size: 48px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;">Why Rent From J&amp;S Auto Rentals</h2><p class="text-white/85 max-w-2xl mx-auto" x-file-name="WhyChooseUs" x-line-number="44" x-column="10" x-component="p" x-id="WhyChooseUs_44_10" x-dynamic="false" style="font-size: 20px; font-weight: 500; line-height: 1.5; letter-spacing: 0px;">Perfect for business, events, or luxury driving experiences</p></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" x-file-name="WhyChooseUs" x-line-number="58" x-column="8" x-component="div" x-id="WhyChooseUs_58_8" x-dynamic="true" x-source-type="computed" x-source-editable="false"><div class="bg-[#121212] p-8 transition-all duration-400 hover:transform hover:translateY-[-8px] rounded-2xl border border-white/10 hover:border-[#00FFD1]/30 hover:shadow-2xl hover:shadow-[#00FFD1]/10" x-file-name="WhyChooseUs" x-line-number="62" x-column="14" x-component="div" x-id="WhyChooseUs_62_14" x-dynamic="false" style=""><div class="mb-6" x-file-name="WhyChooseUs" x-line-number="66" x-column="16" x-component="div" x-id="WhyChooseUs_66_16" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench text-[#00FFD1]" aria-hidden="true" x-file-name="WhyChooseUs" x-line-number="67" x-column="18" x-component="IconComponent" x-id="WhyChooseUs_67_18" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 class="text-white text-xl font-semibold mb-3" x-file-name="WhyChooseUs" x-line-number="69" x-column="16" x-component="h3" x-id="WhyChooseUs_69_16" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-path="title" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature">Reliable</h3><p class="text-white/70 text-base leading-relaxed" x-file-name="WhyChooseUs" x-line-number="72" x-column="16" x-component="p" x-id="WhyChooseUs_72_16" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-path="description" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature">Every vehicle is meticulously maintained to the highest standards</p></div><div class="bg-[#121212] p-8 transition-all duration-400 hover:transform hover:translateY-[-8px] rounded-2xl border border-white/10 hover:border-[#00FFD1]/30 hover:shadow-2xl hover:shadow-[#00FFD1]/10" x-file-name="WhyChooseUs" x-line-number="62" x-column="14" x-component="div" x-id="WhyChooseUs_62_14" x-dynamic="false" style=""><div class="mb-6" x-file-name="WhyChooseUs" x-line-number="66" x-column="16" x-component="div" x-id="WhyChooseUs_66_16" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin text-[#00FFD1]" aria-hidden="true" x-file-name="WhyChooseUs" x-line-number="67" x-column="18" x-component="IconComponent" x-id="WhyChooseUs_67_18" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></div><h3 class="text-white text-xl font-semibold mb-3" x-file-name="WhyChooseUs" x-line-number="69" x-column="16" x-component="h3" x-id="WhyChooseUs_69_16" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-path="title" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature">Easy Pickup</h3><p class="text-white/70 text-base leading-relaxed" x-file-name="WhyChooseUs" x-line-number="72" x-column="16" x-component="p" x-id="WhyChooseUs_72_16" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-path="description" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature">Convenient Troy, Michigan location with easy contactless access</p></div><div class="bg-[#121212] p-8 transition-all duration-400 hover:transform hover:translateY-[-8px] rounded-2xl border border-white/10 hover:border-[#00FFD1]/30 hover:shadow-2xl hover:shadow-[#00FFD1]/10" x-file-name="WhyChooseUs" x-line-number="62" x-column="14" x-component="div" x-id="WhyChooseUs_62_14" x-dynamic="false" style=""><div class="mb-6" x-file-name="WhyChooseUs" x-line-number="66" x-column="16" x-component="div" x-id="WhyChooseUs_66_16" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone text-[#00FFD1]" aria-hidden="true" x-file-name="WhyChooseUs" x-line-number="67" x-column="18" x-component="IconComponent" x-id="WhyChooseUs_67_18" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg></div><h3 class="text-white text-xl font-semibold mb-3" x-file-name="WhyChooseUs" x-line-number="69" x-column="16" x-component="h3" x-id="WhyChooseUs_69_16" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-path="title" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature">Easy Booking</h3><p class="text-white/70 text-base leading-relaxed" x-file-name="WhyChooseUs" x-line-number="72" x-column="16" x-component="p" x-id="WhyChooseUs_72_16" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-path="description" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature">Seamless reservation process through Turo</p></div><div class="bg-[#121212] p-8 transition-all duration-400 hover:transform hover:translateY-[-8px] rounded-2xl border border-white/10 hover:border-[#00FFD1]/30 hover:shadow-2xl hover:shadow-[#00FFD1]/10" x-file-name="WhyChooseUs" x-line-number="62" x-column="14" x-component="div" x-id="WhyChooseUs_62_14" x-dynamic="false" style=""><div class="mb-6" x-file-name="WhyChooseUs" x-line-number="66" x-column="16" x-component="div" x-id="WhyChooseUs_66_16" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award text-[#00FFD1]" aria-hidden="true" x-file-name="WhyChooseUs" x-line-number="67" x-column="18" x-component="IconComponent" x-id="WhyChooseUs_67_18" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg></div><h3 class="text-white text-xl font-semibold mb-3" x-file-name="WhyChooseUs" x-line-number="69" x-column="16" x-component="h3" x-id="WhyChooseUs_69_16" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-path="title" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature">Luxury Fleet</h3><p class="text-white/70 text-base leading-relaxed" x-file-name="WhyChooseUs" x-line-number="72" x-column="16" x-component="p" x-id="WhyChooseUs_72_16" x-dynamic="true" x-source-type="static-imported" x-source-var="features" x-source-file-abs="/app/frontend/src/components/WhyChooseUs.jsx" x-source-line="5" x-source-path="description" x-source-editable="true" x-array-var="features" x-array-line="5" x-array-item-param="feature">Hand-selected premium vehicles for unforgettable experiences</p></div></div></div></section>
 <style>
@@ -4921,7 +5765,7 @@ scroll-snap-align:center;
 @jnsautorentals
 
 </a><div></div>
-<a href="https://instagram.com/jnsautorentals" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[#00FFD1] hover:text-white transition-colors duration-300" x-file-name="Footer" x-line-number="32" x-column="12" x-component="a" x-id="Footer_32_12" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="instagram" x-source-editable="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram" aria-hidden="true" x-file-name="Footer" x-line-number="38" x-column="14" x-component="Instagram" x-id="Footer_38_14" x-dynamic="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>@<span data-ve-dynamic="true" x-excluded="true" x-file-name="Footer" x-line-number="32" x-column="12" x-component="a" x-id="Footer_32_12_expr3" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="instagram" x-source-editable="true" style="display: contents;">jnsautorentals</span></a></div><div x-file-name="Footer" x-line-number="44" x-column="10" x-component="div" x-id="Footer_44_10" x-dynamic="false"><h4 class="text-xl font-semibold text-white mb-6" x-file-name="Footer" x-line-number="45" x-column="12" x-component="h4" x-id="Footer_45_12" x-dynamic="false">Contact Us</h4><div class="space-y-4" x-file-name="Footer" x-line-number="46" x-column="12" x-component="div" x-id="Footer_46_12" x-dynamic="false"><a href="tel:+1 (313) 757-0019" class="flex items-center gap-3 text-white/70 hover:text-[#00FFD1] transition-colors duration-300" x-file-name="Footer" x-line-number="47" x-column="14" x-component="a" x-id="Footer_47_14" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone" aria-hidden="true" x-file-name="Footer" x-line-number="51" x-column="16" x-component="Phone" x-id="Footer_51_16" x-dynamic="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span x-file-name="Footer" x-line-number="52" x-column="16" x-component="span" x-id="Footer_52_16" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="phone" x-source-editable="true">+1 (313) 757-0019</span></a><a href="mailto:support@jsautorentals.com" class="flex items-center gap-3 text-white/70 hover:text-[#00FFD1] transition-colors duration-300" x-file-name="Footer" x-line-number="54" x-column="14" x-component="a" x-id="Footer_54_14" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true" x-file-name="Footer" x-line-number="58" x-column="16" x-component="Mail" x-id="Footer_58_16" x-dynamic="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span x-file-name="Footer" x-line-number="59" x-column="16" x-component="span" x-id="Footer_59_16" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="email" x-source-editable="true">support@jsautorentals.com</span></a><div class="flex items-start gap-3 text-white/70" x-file-name="Footer" x-line-number="61" x-column="14" x-component="div" x-id="Footer_61_14" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mt-1 flex-shrink-0" aria-hidden="true" x-file-name="Footer" x-line-number="62" x-column="16" x-component="MapPin" x-id="Footer_62_16" x-dynamic="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><span x-file-name="Footer" x-line-number="63" x-column="16" x-component="span" x-id="Footer_63_16" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="address" x-source-editable="true">1142 E Big Beaver Rd, Troy, MI 48083</span></div></div></div><div x-file-name="Footer" x-line-number="69" x-column="10" x-component="div" x-id="Footer_69_10" x-dynamic="false"><h4 class="text-xl font-semibold text-white mb-6" x-file-name="Footer" x-line-number="70" x-column="12" x-component="h4" x-id="Footer_70_12" x-dynamic="false">Quick Links</h4><div class="space-y-3" x-file-name="Footer" x-line-number="71" x-column="12" x-component="div" x-id="Footer_71_12" x-dynamic="false"><a href="https://turo.com/us/en/drivers/48523299" target="_blank" rel="noopener noreferrer" class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300" x-file-name="Footer" x-line-number="72" x-column="14" x-component="a" x-id="Footer_72_14" x-dynamic="false">View on Turo</a><button class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300 text-left" x-file-name="Footer" x-line-number="80" x-column="14" x-component="button" x-id="Footer_80_14" onclick="window.location.href='#fleet'" x-dynamic="false">Our Fleet</button><button class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300 text-left" x-file-name="Footer" x-line-number="86" x-column="14" x-component="button" x-id="Footer_86_14" onclick="window.location.href='#how-it-works'"x-dynamic="false">How It Works</button><button class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300 text-left" x-file-name="Footer" x-line-number="92" x-column="14" x-component="button" x-id="Footer_92_14" onclick="window.location.href='#testimonials'" x-dynamic="false">Testimonials</button></div></div></div><div class="pt-8 border-t border-white/25" x-file-name="Footer" x-line-number="103" x-column="8" x-component="div" x-id="Footer_103_8" x-dynamic="false"><div class="flex flex-col md:flex-row justify-between items-center gap-4" x-file-name="Footer" x-line-number="104" x-column="10" x-component="div" x-id="Footer_104_10" x-dynamic="false"><p class="text-white/60 text-sm" x-file-name="Footer" x-line-number="105" x-column="12" x-component="p" x-id="Footer_105_12" x-dynamic="true" x-source-type="computed" x-source-editable="false">© <span data-ve-dynamic="true" x-excluded="true" x-file-name="Footer" x-line-number="105" x-column="12" x-component="p" x-id="Footer_105_12_expr1" x-dynamic="true" x-source-type="computed" x-source-editable="false" style="display: contents;">2026</span> J&amp;S Auto Rentals. All rights reserved.</p><p class="text-white/60 text-sm" x-file-name="Footer" x-line-number="108" x-column="12" x-component="p" x-id="Footer_108_12" x-dynamic="false"></p></div></div></div><style>
+<a href="https://instagram.com/jnsautorentals" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[#00FFD1] hover:text-white transition-colors duration-300" x-file-name="Footer" x-line-number="32" x-column="12" x-component="a" x-id="Footer_32_12" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="instagram" x-source-editable="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram" aria-hidden="true" x-file-name="Footer" x-line-number="38" x-column="14" x-component="Instagram" x-id="Footer_38_14" x-dynamic="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>@<span data-ve-dynamic="true" x-excluded="true" x-file-name="Footer" x-line-number="32" x-column="12" x-component="a" x-id="Footer_32_12_expr3" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="instagram" x-source-editable="true" style="display: contents;">jnsautorentals</span></a></div><div x-file-name="Footer" x-line-number="44" x-column="10" x-component="div" x-id="Footer_44_10" x-dynamic="false"><h4 class="text-xl font-semibold text-white mb-6" x-file-name="Footer" x-line-number="45" x-column="12" x-component="h4" x-id="Footer_45_12" x-dynamic="false">Contact Us</h4><div class="space-y-4" x-file-name="Footer" x-line-number="46" x-column="12" x-component="div" x-id="Footer_46_12" x-dynamic="false"><a href="tel:+1 (313) 757-0019" class="flex items-center gap-3 text-white/70 hover:text-[#00FFD1] transition-colors duration-300" x-file-name="Footer" x-line-number="47" x-column="14" x-component="a" x-id="Footer_47_14" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone" aria-hidden="true" x-file-name="Footer" x-line-number="51" x-column="16" x-component="Phone" x-id="Footer_51_16" x-dynamic="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span x-file-name="Footer" x-line-number="52" x-column="16" x-component="span" x-id="Footer_52_16" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="phone" x-source-editable="true">+1 (313) 757-0019</span></a><a href="mailto:support@jsautorentals.com" class="flex items-center gap-3 text-white/70 hover:text-[#00FFD1] transition-colors duration-300" x-file-name="Footer" x-line-number="54" x-column="14" x-component="a" x-id="Footer_54_14" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true" x-file-name="Footer" x-line-number="58" x-column="16" x-component="Mail" x-id="Footer_58_16" x-dynamic="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span x-file-name="Footer" x-line-number="59" x-column="16" x-component="span" x-id="Footer_59_16" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="email" x-source-editable="true">support@jsautorentals.com</span></a><div class="flex items-start gap-3 text-white/70" x-file-name="Footer" x-line-number="61" x-column="14" x-component="div" x-id="Footer_61_14" x-dynamic="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mt-1 flex-shrink-0" aria-hidden="true" x-file-name="Footer" x-line-number="62" x-column="16" x-component="MapPin" x-id="Footer_62_16" x-dynamic="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><span x-file-name="Footer" x-line-number="63" x-column="16" x-component="span" x-id="Footer_63_16" x-dynamic="true" x-source-type="static-imported" x-source-var="companyInfo" x-source-file="../data/mock" x-source-file-abs="/app/frontend/src/data/mock.js" x-source-line="63" x-source-path="address" x-source-editable="true">1142 E Big Beaver Rd, Troy, MI 48083</span></div></div></div><div x-file-name="Footer" x-line-number="69" x-column="10" x-component="div" x-id="Footer_69_10" x-dynamic="false"><h4 class="text-xl font-semibold text-white mb-6" x-file-name="Footer" x-line-number="70" x-column="12" x-component="h4" x-id="Footer_70_12" x-dynamic="false">Quick Links</h4><div class="space-y-3" x-file-name="Footer" x-line-number="71" x-column="12" x-component="div" x-id="Footer_71_12" x-dynamic="false"><a href="https://turo.com/us/en/drivers/48523299" target="_blank" rel="noopener noreferrer" class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300" x-file-name="Footer" x-line-number="72" x-column="14" x-component="a" x-id="Footer_72_14" x-dynamic="false">View on Turo</a><button class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300 text-left" x-file-name="Footer" x-line-number="80" x-column="14" x-component="button" x-id="Footer_80_14" onclick="window.location.href='#fleet'" x-dynamic="false">Our Fleet</button><button class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300 text-left" x-file-name="Footer" x-line-number="86" x-column="14" x-component="button" x-id="Footer_86_14" onclick="window.location.href='#chauffeur'"x-dynamic="false">Transport</button><button class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300 text-left" x-file-name="Footer" x-line-number="86" x-column="14" x-component="button" x-id="Footer_86_14" onclick="window.location.href='#how-it-works'"x-dynamic="false">How It Works</button><button class="block text-white/70 hover:text-[#00FFD1] transition-colors duration-300 text-left" x-file-name="Footer" x-line-number="92" x-column="14" x-component="button" x-id="Footer_92_14" onclick="window.location.href='#testimonials'" x-dynamic="false">Testimonials</button></div></div></div><div class="pt-8 border-t border-white/25" x-file-name="Footer" x-line-number="103" x-column="8" x-component="div" x-id="Footer_103_8" x-dynamic="false"><div class="flex flex-col md:flex-row justify-between items-center gap-4" x-file-name="Footer" x-line-number="104" x-column="10" x-component="div" x-id="Footer_104_10" x-dynamic="false"><p class="text-white/60 text-sm" x-file-name="Footer" x-line-number="105" x-column="12" x-component="p" x-id="Footer_105_12" x-dynamic="true" x-source-type="computed" x-source-editable="false">© <span data-ve-dynamic="true" x-excluded="true" x-file-name="Footer" x-line-number="105" x-column="12" x-component="p" x-id="Footer_105_12_expr1" x-dynamic="true" x-source-type="computed" x-source-editable="false" style="display: contents;">2026</span> J&amp;S Auto Rentals. All rights reserved.</p><p class="text-white/60 text-sm" x-file-name="Footer" x-line-number="108" x-column="12" x-component="p" x-id="Footer_108_12" x-dynamic="false"></p></div></div></div><style>
 #jsaOverlay{
 position:fixed;inset:0;background:rgba(0,0,0,.8);
 backdrop-filter:blur(10px);display:none;
