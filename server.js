@@ -17,7 +17,7 @@ const app = express();
 /* =========================
    EMAIL
 ========================= */
-
+console.log("EMAIL_HOST:", process.env.EMAIL_HOST);
 const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: 587,
