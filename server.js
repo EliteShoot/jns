@@ -9,7 +9,6 @@ ChannelType,
 EmbedBuilder
 } = require("discord.js");
 const nodemailer = require("nodemailer");
-const app = express();
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: 587,
@@ -25,7 +24,9 @@ app.use(cors({
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type"]
 }));
+
 const express = require("express");
+const app = express();
 
 app.use(cors({
   origin: "https://jsautorentals.com",
