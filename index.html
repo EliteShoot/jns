@@ -4654,15 +4654,10 @@ messages.forEach(msg => {
 
 }, 3000);
 </script>
-
 <script>
 
 let currentStep = 1;
 const lead = {};
-
-/* =========================
-   MODAL CONTROLS
-========================= */
 
 function openChauffeurModal() {
     document.getElementById('chauffeurModal').style.display = 'flex';
@@ -4673,41 +4668,44 @@ function openChauffeurModal() {
 function closeChauffeurModal() {
     document.getElementById('chauffeurModal').style.display = 'none';
 }
+function saveDate(){
 
-/* =========================
-   DATE HANDLING
-========================= */
+const input =
+document.getElementById('rideDate');
 
-function saveDate() {
+if(!input.value){
 
-    const input = document.getElementById('rideDate');
+alert('Please select a date and time.');
 
-    if (!input || !input.value) {
-        alert('Please select a date and time.');
-        return;
-    }
+return;
 
-    lead.date = input.value;
-
-    currentStep++;
-    renderStep();
 }
 
-/* =========================
-   FLEET VEHICLES
-========================= */
+lead.date = input.value;
 
+currentStep++;
+
+renderStep();
+
+}
 function getFleetVehicles() {
 
     const vehicles = [];
 
     document.querySelectorAll('.fleet-card').forEach(card => {
 
-        const img = card.querySelector('img')?.src || '';
-        const name = card.querySelector('h3')?.textContent.trim() || '';
+        const img =
+            card.querySelector('img')?.src || '';
 
-        if (name) {
-            vehicles.push({ name, image: img });
+        const name =
+            card.querySelector('h3')?.textContent.trim() || '';
+
+        if(name) {
+            vehicles.push({
+                name,
+                image: img
+            });
+
         }
 
     });
@@ -4715,26 +4713,18 @@ function getFleetVehicles() {
     return vehicles;
 }
 
-/* =========================
-   PROGRESS BAR
-========================= */
-
 function updateProgress() {
 
     const totalSteps = 7;
 
-    const progress = ((currentStep - 1) / totalSteps) * 100;
+    const progress =
+        ((currentStep - 1) / totalSteps) * 100;
 
-    const bar = document.querySelector('.chauffeur-progress-fill');
+    document.querySelector(
+        '.chauffeur-progress-fill'
+    ).style.width = progress + '%';
 
-    if (bar) {
-        bar.style.width = progress + '%';
-    }
 }
-
-/* =========================
-   STEP RENDERER
-========================= */
 
 function renderStep() {
 
@@ -4743,241 +4733,359 @@ function renderStep() {
     let html = '';
 
     if (currentStep > 1) {
+
         html += `
-        <div class="back-btn" onclick="currentStep--;renderStep();">
-            ← Back
+        <div class="back-btn"
+             onclick="currentStep--;renderStep();">
+             ← Back
         </div>
         `;
+
     }
 
     /* STEP 1 */
+
     if (currentStep === 1) {
 
         html += `
-        <h2 class="question-title">What service do you need?</h2>
+
+        <h2 class="question-title">
+            What service do you need?
+        </h2>
 
         <div class="choice-grid">
 
-            <div class="choice-card" onclick="
-                lead.service='Airport Transfer';
-                currentStep++;
-                renderStep();
-            ">
+            <div class="choice-card"
+                 onclick="
+                 lead.service='Airport Transfer';
+                 currentStep++;
+                 renderStep();
+                 ">
+
                 <h3>Airport Transfer</h3>
-                <p style="font-size: 13px; color: #888;">
-                    Transportation to or from the airport.
-                </p>
+
+<p style="font-size: 13px; color: #888;">
+    Transportation to or from the airport.
+</p>
+
             </div>
 
-            <div class="choice-card" onclick="
-                lead.service='Hourly Chauffeur';
-                currentStep++;
-                renderStep();
-            ">
+            <div class="choice-card"
+                 onclick="
+                 lead.service='Hourly Chauffeur';
+                 currentStep++;
+                 renderStep();
+                 ">
+
                 <h3>Hourly Chauffeur</h3>
+
                 <p style="font-size: 13px; color: #888;">
                     Private driver available by the hour.
                 </p>
+
             </div>
 
         </div>
+
         `;
     }
 
     /* STEP 2 */
+
     else if (currentStep === 2) {
 
         const vehicles = getFleetVehicles();
 
-        html += `<h2 class="question-title">Choose Your Vehicle</h2><div class="vehicle-grid">`;
+        html += `
+        <h2 class="question-title">
+            Choose Your Vehicle
+        </h2>
+
+        <div class="vehicle-grid">
+        `;
 
         vehicles.forEach(vehicle => {
+
             html += `
-            <div class="vehicle-card" onclick="
+
+            <div class="vehicle-card"
+
+                onclick="
                 lead.vehicle='${vehicle.name}';
                 currentStep++;
                 renderStep();
-            ">
+                ">
+
                 <img src="${vehicle.image}">
-                <h4>${vehicle.name}</h4>
+
+                <h4>
+                    ${vehicle.name}
+                </h4>
+
             </div>
+
             `;
+
         });
 
         html += `</div>`;
     }
 
     /* STEP 3 */
+
     else if (currentStep === 3) {
 
         html += `
-        <h2 class="question-title">How Many Passengers?</h2>
+
+        <h2 class="question-title">
+            How Many Passengers?
+        </h2>
 
         <div class="choice-grid">
 
-            <div class="choice-card" onclick="
-                lead.passengers='1-2';
-                currentStep++;
-                renderStep();
-            ">1-2 Passengers</div>
+            <div class="choice-card"
+                 onclick="
+                 lead.passengers='1-2';
+                 currentStep++;
+                 renderStep();
+                 ">
+                 1-2 Passengers
+            </div>
 
-            <div class="choice-card" onclick="
-                lead.passengers='3-5';
-                currentStep++;
-                renderStep();
-            ">3-5 Passengers</div>
+            <div class="choice-card"
+                 onclick="
+                 lead.passengers='3-5';
+                 currentStep++;
+                 renderStep();
+                 ">
+                 3-5 Passengers
+            </div>
 
-            <div class="choice-card" onclick="
-                lead.passengers='6+';
-                currentStep++;
-                renderStep();
-            ">6+ Passengers</div>
+            <div class="choice-card"
+                 onclick="
+                 lead.passengers='6+';
+                 currentStep++;
+                 renderStep();
+                 ">
+                 6+ Passengers
+            </div>
 
         </div>
+
         `;
     }
 
     /* STEP 4 */
+
     else if (currentStep === 4) {
 
         html += `
-        <h2 class="question-title">Pickup Location</h2>
 
-        <input id="pickup" class="luxury-input" placeholder="Enter pickup address">
+        <h2 class="question-title">
+            Pickup Location
+        </h2>
 
-        <button class="submit-btn" onclick="
-            const pickup = document.getElementById('pickup').value.trim();
-            if(pickup.length < 10){
-                alert('Please enter a valid pickup address.');
-                return;
-            }
-            lead.pickup = pickup;
-            currentStep++;
-            renderStep();
-        ">
+        <input
+            id="pickup"
+            class="luxury-input"
+            placeholder="Enter pickup address">
+            
+
+        <button class="submit-btn"
+
+onclick="
+
+const pickup =
+document.getElementById('pickup').value.trim();
+
+if(pickup.length < 10){
+
+    alert('Please enter a valid pickup address.');
+
+    return;
+}
+
+lead.pickup = pickup;
+
+currentStep++;
+
+renderStep();
+
+">
+
             Continue
+
         </button>
+
         `;
     }
 
     /* STEP 5 */
+
     else if (currentStep === 5) {
 
         html += `
-        <h2 class="question-title">Dropoff Location</h2>
 
-        <input id="dropoff" class="luxury-input" placeholder="Enter dropoff address">
+        <h2 class="question-title">
+            Dropoff Location
+        </h2>
 
-        <button class="submit-btn" onclick="
-            const dropoff = document.getElementById('dropoff').value.trim();
-            if(dropoff.length < 10){
-                alert('Please enter a valid dropoff address.');
-                return;
-            }
-            lead.dropoff = dropoff;
-            currentStep++;
-            renderStep();
-        ">
+        <input
+            id="dropoff"
+            class="luxury-input"
+            placeholder="Enter dropoff address">
+
+        <button class="submit-btn"
+
+onclick="
+
+const dropoff =
+document.getElementById('dropoff').value.trim();
+
+if(dropoff.length < 10){
+
+    alert('Please enter a valid dropoff address.');
+
+    return;
+}
+
+lead.dropoff = dropoff;
+
+currentStep++;
+
+renderStep();
+
+">
+
             Continue
+
         </button>
+
         `;
     }
 
     /* STEP 6 */
-    else if (currentStep === 6) {
 
-        const minDateObj = new Date();
-        minDateObj.setHours(minDateObj.getHours() + 2);
+else if (currentStep === 6) {
+function openDatePicker(input){
 
-        const minDate = minDateObj.toISOString().slice(0, 16);
-
-        html += `
-        <h2 class="question-title">Select Date & Time</h2>
-
-        <input
-            id="rideDate"
-            type="datetime-local"
-            class="luxury-input"
-            min="${minDate}"
-        >
-
-        <button class="submit-btn" onclick="saveDate()">
-            Continue
-        </button>
-        `;
+    if(input.showPicker){
+        input.showPicker();
     }
 
+}
+const minDateObj = new Date();
+
+minDateObj.setHours(
+    minDateObj.getHours() + 2
+);
+
+const minDate =
+minDateObj.toISOString().slice(0,16);
+
+html += `
+
+<h2 class="question-title">
+Select Date & Time
+</h2>
+
+<input
+    id="rideDate"
+    type="datetime-local"
+    class="luxury-input"
+    min="${minDate}"
+    onfocus="this.showPicker && this.showPicker()">
+
+<button
+    class="submit-btn"
+
+    onclick="saveDate()">
+
+    Continue
+
+</button>
+
+`;
+
+}
+
     /* STEP 7 */
+
     else if (currentStep === 7) {
 
         html += `
-        <h2 class="question-title">Contact Information</h2>
 
-        <input id="name" class="luxury-input" placeholder="Full Name">
-        <input id="phone" class="luxury-input" placeholder="Phone Number">
-        <input id="email" class="luxury-input" placeholder="Email Address">
+        <h2 class="question-title">
+            Contact Information
+        </h2>
 
-        <label class="consent-wrapper">
-            <input type="checkbox" id="consent">
-            <span class="consent-text">
-                I agree to be contacted regarding this transportation request.
-            </span>
+        <input
+            id="name"
+            class="luxury-input"
+            placeholder="Full Name">
+
+        <input
+            id="phone"
+            class="luxury-input"
+            placeholder="Phone Number">
+
+        <input
+            id="email"
+            class="luxury-input"
+            placeholder="Email Address">
+
+        <label style="
+            display:flex;
+            gap:10px;
+            margin-bottom:20px;
+            align-items:flex-start;
+        ">
+
+ <label class="consent-wrapper">
+    <input type="checkbox" id="consent" required>
+<span class="consent-checkmark"></span> <span class="consent-text"> I agree to be contacted regarding this transportation request and understand that submitting this form does not guarantee a reservation. </span></label>
+
         </label>
 
-        <button class="submit-btn" onclick="submitLead()">
+        <button
+            class="submit-btn"
+            onclick="submitLead()">
+
             Submit Request
+
         </button>
+
         `;
     }
 
-    document.getElementById('chauffeurStep').innerHTML = html;
+    document.getElementById(
+        'chauffeurStep'
+    ).innerHTML = html;
 }
-
-/* =========================
-   SUBMIT LEAD
-========================= */
 
 async function submitLead() {
 
-    const nameEl = document.getElementById('name');
-    const phoneEl = document.getElementById('phone');
-    const emailEl = document.getElementById('email');
-    const consentEl = document.getElementById('consent');
+    if (
+        !document.getElementById(
+            'consent'
+        ).checked
+    ) {
 
-    if (!nameEl || !phoneEl || !emailEl || !consentEl) {
-        alert("Form not ready.");
+        alert(
+            'Please accept the consent checkbox.'
+        );
+
         return;
     }
 
-    const name = nameEl.value.trim();
-    const phone = phoneEl.value.trim();
-    const email = emailEl.value.trim();
+    lead.name =
+        document.getElementById('name').value;
 
-    if (name.length < 2) {
-        alert('Please enter your full name.');
-        return;
-    }
+    lead.phone =
+        document.getElementById('phone').value;
 
-    const phoneRegex = /^[0-9()+-\s]{10,20}$/;
-    if (!phoneRegex.test(phone)) {
-        alert('Please enter a valid phone number.');
-        return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
-
-    if (!consentEl.checked) {
-        alert('Please accept the consent checkbox.');
-        return;
-    }
-
-    lead.name = name;
-    lead.phone = phone;
-    lead.email = email;
+    lead.email =
+        document.getElementById('email').value;
 
     try {
 
@@ -4985,22 +5093,99 @@ async function submitLead() {
             'https://jns-j4bb.onrender.com/api/chauffeur-request',
             {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify(lead)
             }
         );
 
-        if (!response.ok) throw new Error();
+        if (!response.ok) {
+            throw new Error();
+        }
 
-        document.getElementById('chauffeurStep').innerHTML = `
-            <h2 class="question-title">Request Received</h2>
-            <p>Thank you. A team member will contact you shortly.</p>
+        document.getElementById(
+            'chauffeurStep'
+        ).innerHTML = `
+
+        <h2 class="question-title">
+            Request Received
+        </h2>
+
+        <p>
+            Thank you for your inquiry.
+            A member of our team will contact
+            you shortly.
+        </p>
+
         `;
 
     } catch (err) {
-        alert('Something went wrong. Please try again.');
+
+        alert(
+            'Something went wrong. Please try again.'
+        );
+
     }
 }
+const name =
+document.getElementById('name').value.trim();
+
+const phone =
+document.getElementById('phone').value.trim();
+
+const email =
+document.getElementById('email').value.trim();
+
+if(name.length < 2){
+
+```
+alert('Please enter your full name.');
+
+return;
+```
+
+}
+
+const phoneRegex =
+/^[0-9()+-\s]{10,20}$/;
+
+if(!phoneRegex.test(phone)){
+
+```
+alert('Please enter a valid phone number.');
+
+return;
+```
+
+}
+
+const emailRegex =
+/^[^\s@]+@[^\s@]+.[^\s@]+$/;
+
+if(!emailRegex.test(email)){
+
+```
+alert('Please enter a valid email address.');
+
+return;
+```
+
+}
+
+if(!document.getElementById('consent').checked){
+
+```
+alert('Please accept the consent checkbox.');
+
+return;
+```
+
+}
+
+lead.name = name;
+lead.phone = phone;
+lead.email = email;
 
 </script>
 
