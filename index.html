@@ -5141,16 +5141,42 @@ async function submitLead() {
             'chauffeurStep'
         ).innerHTML = `
         
+ <div class="success-screen">
+
+        <div style="font-size:52px;margin-bottom:15px;">
+            👏
+        </div>
 
         <h2 class="question-title">
-            Request Received
+            Request Received!
         </h2>
 
-        <p>
-            Thank you for your inquiry.
-            A member of our team will contact
-            you shortly.
+        <p style="font-size:18px;font-weight:600;margin-bottom:12px;">
+            Thank you for choosing J&S Auto Rentals.
         </p>
+
+        <p style="line-height:1.7;opacity:.85;margin-bottom:12px;">
+            Your transportation request has been successfully submitted and is now being reviewed by our team.
+        </p>
+
+        <p style="line-height:1.7;opacity:.85;margin-bottom:18px;">
+            We will contact you shortly to confirm availability and finalize your reservation details.
+        </p>
+
+        <p style="font-weight:600;margin-bottom:25px;">
+            We look forward to serving you soon. 🚘
+        </p>
+
+        <button
+            type="button"
+            class="next-btn"
+            style="width:100%;"
+            onclick="closeChauffeurModal()">
+            Finish
+        </button>
+
+    </div>
+
 
         `;
 
