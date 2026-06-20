@@ -5135,7 +5135,7 @@ async function submitLead() {
         if (!response.ok) {
             throw new Error();
         }
-    else if (currentStep === 8) 
+        document.querySelector('.chauffeur-progress-fill').style.width = '100%';
         document.getElementById(
           
             'chauffeurStep'
