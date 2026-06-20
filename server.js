@@ -26,7 +26,40 @@ GatewayIntentBits.GuildMessages,
 GatewayIntentBits.MessageContent
 ]
 });
+app.post('/api/chauffeur-request', async (req,res)=>{
 
+const data = req.body;
+
+await transporter.sendMail({
+
+from: process.env.EMAIL_USER,
+
+to: 'YOUR_EMAIL@gmail.com',
+
+subject: 'New Chauffeur Lead',
+
+html: `
+<h2>New Chauffeur Request</h2>
+
+<p><strong>Name:</strong> ${data.name}</p>
+
+<p><strong>Email:</strong> ${data.email}</p>
+
+<p><strong>Phone:</strong> ${data.phone}</p>
+
+<p><strong>Service:</strong> ${data.service}</p>
+
+<p><strong>Vehicle:</strong> ${data.vehicle}</p>
+
+<p><strong>Hours:</strong> ${data.hours || '-'}</p>
+
+<p><strong>Pickup:</strong> ${data.pickup || '-'}</p>
+`
+});
+
+res.json({success:true});
+
+});
 const sessions = {};
 const replies = {};
 
