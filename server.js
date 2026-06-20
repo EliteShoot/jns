@@ -27,7 +27,18 @@ app.use(cors({
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type"]
 }));
+const express = require("express");
+const cors = require("cors");
 
+const app = express();
+
+app.use(cors({
+  origin: "https://jsautorentals.com",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
+}));
+
+app.use(express.json());
 app.options("*", cors());
 
 app.use(express.json());
