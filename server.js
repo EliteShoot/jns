@@ -27,7 +27,6 @@ app.use(cors({
   allowedHeaders: ["Content-Type"]
 }));
 const express = require("express");
-const cors = require("cors");
 
 const app = express();
 
