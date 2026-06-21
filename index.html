@@ -483,13 +483,12 @@ text-align:center;
   border-radius: 14px;
   color: white;
   margin-bottom: 15px;
-  font-size: 16px;
+  font-size: 16px; /* important for iOS zoom/overflow */
 }
 .luxury-input[type="datetime-local"] {
   cursor: pointer;
-}
-.luxury-input:invalid {
-  color: rgba(255,255,255,0.6);
+  -webkit-appearance: none;
+  appearance: none;
 }
 .luxury-input::-webkit-calendar-picker-indicator {
   cursor: pointer;
