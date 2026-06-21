@@ -5006,36 +5006,46 @@ renderStep();
     /* STEP 6 */
 
 else if (currentStep === 6) {
+function openDatePicker(input){
 
-    // build proper LOCAL datetime (NOT UTC)
-    const minDateObj = new Date();
-    minDateObj.setHours(minDateObj.getHours() + 2);
+    if(input.showPicker){
+        input.showPicker();
+    }
 
-    const pad = (n) => n.toString().padStart(2, '0');
+}
+const minDateObj = new Date();
 
-    const minDate =
-        minDateObj.getFullYear() + '-' +
-        pad(minDateObj.getMonth() + 1) + '-' +
-        pad(minDateObj.getDate()) + 'T' +
-        pad(minDateObj.getHours()) + ':' +
-        pad(minDateObj.getMinutes());
+minDateObj.setHours(
+    minDateObj.getHours() + 2
+);
 
-    html += `
-        <h2 class="question-title">
-            Select Date & Time
-        </h2>
+const minDate =
+minDateObj.toISOString().slice(0,16);
 
-        <input
-            id="rideDate"
-            type="datetime-local"
-            class="luxury-input"
-            min="${minDate}"
-        >
+html += `
 
-        <button class="submit-btn" onclick="saveDate()">
-            Continue
-        </button>
-    `;
+<h2 class="question-title">
+Select Date & Time
+</h2>
+
+<input
+    id="rideDate"
+    type="datetime-local"
+    class="luxury-input"
+    min="${minDate}"
+    onfocus="this.showPicker && this.showPicker()">
+
+<button
+    class="submit-btn"
+
+    onclick="saveDate()">
+
+    Continue
+
+</button>
+
+`;
+
 }
 
     /* STEP 7 */
